@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-void ft_bzero(void *ptr, int size)
+void ft_bzero(void *ptr, size_t size)
 {
     unsigned char *n;
     int i;
