@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "ft_memcpy.c"
 #include <stdio.h>
-int ft_strlen(const char *str)
+int ft_strlenn(const char *str)
 {
     int i = 0;
     while(*str)
@@ -17,8 +17,8 @@ int ft_strlcat(char *dest, const char *src, size_t size)
     int srclen;
     int result;
 
-    destlen = ft_strlen(dest);
-    srclen = ft_strlen(src);
+    destlen = ft_strlenn(dest);
+    srclen = ft_strlenn(src);
     if(destlen > size)
     {
         return size + srclen;
@@ -35,14 +35,4 @@ int ft_strlcat(char *dest, const char *src, size_t size)
 		dest[size - 1] = '\0';
 	}
 	return (result);
-}
-#include <string.h>
-int main()
-{
-    char dest[20] = "abcd ";
-    const char src[20] = "efjh";
-    int n = ft_strlcat(dest, src, 21);
-
-    printf("%s\n", dest);
-    printf("%d\n", n);
 }
