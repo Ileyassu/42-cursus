@@ -11,6 +11,11 @@ char *ft_strjoin(char const *s1, char const *s2)
 
     strings_length = ft_strlen(s1) + ft_strlen((char *)s2);
     ptr = (char *)malloc(strings_length + 1);
+
+    if (ptr == NULL)
+    {
+        return (NULL);
+    }
     result = ptr;
 
     ft_strcpy(ptr, (char *)s1);
