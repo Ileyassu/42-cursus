@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <unistd.h>
 
 void *ft_memcpy(void *dest, const void *src, size_t size)
@@ -8,16 +9,15 @@ void *ft_memcpy(void *dest, const void *src, size_t size)
 
     n = (unsigned char *)dest;
     m = (const unsigned char *) src;
-    i = 0;
     if (size <= 0 || m == NULL || n == NULL)
         return NULL;
     
-    while (i < size)
+    while (--size > 0)
     {
-        n[i] = m[i];
-        i++;
+        *n = *m;
+        n++;
+        m++;
     }
-    
-    return (n);
+    *n--;
+    return (dest);
 }
-#include <stdio.h>
