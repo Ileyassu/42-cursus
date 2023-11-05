@@ -1,23 +1,29 @@
-#include <unistd.h>
-#include <stdio.h>
-int ft_strncmp(const char *str1, const char *str2, size_t n)
-{
-    int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:45:12 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:45:33 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 0;
-    while ((*str1 && *str2) && (*str1 == *str2) && n <= 0)
+#include "libft.h"
+
+int     ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+    size_t i;
+
+    if(!s1 || !s2)
     {
-        printf("%d\n", (int)i);
-        str1++;
-        str2++;
-        n--;
+        return (NULL);
+    }   
+    i = 0;
+    while(s1[i] && s1[i] == s2[i] && i < n)
+    {
+        i++;
     }
-    return (*str1 - *str2);
-}
-#include <string.h>
-
-int main()
-{
-    int n = ft_strncmp("zbia", "zbi", 4);
-    printf("%d\n", n);
+    return (s1[i] - s2[i]);
 }

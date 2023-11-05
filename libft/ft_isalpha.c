@@ -1,9 +1,21 @@
-#include <unistd.h>
-int ft_isalpha(const char c)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:42:00 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:42:01 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+int ft_isalpha(const int c)
 {
     if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
     {
-        return(c);
+        return(1);
     }
     else
     {

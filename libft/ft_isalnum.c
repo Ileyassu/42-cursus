@@ -1,15 +1,25 @@
-#include <unistd.h>
-#include "ft_isalpha.c"
-#include "ft_isdigit.c"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:41:57 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:41:58 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_isalnum(const char c)
+#include "libft.h"
+
+int ft_isalnum(const int c)
 {
-    if((ft_isalpha(c)) || (ft_isdigit(c)))
+    if(ft_isalpha(c) || ft_isdigit(c))
     {
-        return c;
+        return (1);
     }
     else
     {
-        return 0;
+        return (0);
     }
 }

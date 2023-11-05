@@ -1,9 +1,17 @@
-#include "ft_memcpy.c"
-#include "ft_strlen.c"
-#include "ft_strnstr.c"
-#include "ft_strchr.c"
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:45:48 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:45:56 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int	len;
@@ -19,24 +27,9 @@ char	*ft_strtrim(char const *s1, char const *set)
     {
         len--;
     }
-    //printf("%d\n",len);
+    len--;
     result = (char *)malloc(len);
     
     ft_memcpy(result,(char *)s1, len + 2);
-    //printf("%s\n",result);
     return result;
 }
-/*
-int main() {
-    const char *input = "  \t   Hello, worldsssssss!   \t  ";
-    printf("string: '%s'\n", input);
-    const char *chars_to_trim = " \t";
-
-    char *trimmed = ft_strtrim(input, chars_to_trim);
-
-    printf("Trimmed string: '%s'\n", trimmed);
-
-    free(trimmed);
-
-    return 0;
-}*/

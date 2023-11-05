@@ -1,5 +1,17 @@
-#include <unistd.h>
-#include "ft_putstr_fd.c"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:42:38 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:42:39 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
 void ft_putendl_fd(char *s, int fd)
 {
     ft_putstr_fd(s, fd);

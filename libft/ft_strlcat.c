@@ -1,24 +1,25 @@
-#include <unistd.h>
-#include "ft_memcpy.c"
-#include <stdio.h>
-int ft_strlenn(const char *str)
-{
-    int i = 0;
-    while(*str)
-    {
-        str++;
-        i++;
-    }
-    return (i);
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:43:41 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:43:42 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
 int ft_strlcat(char *dest, const char *src, size_t size)
 {
     int destlen;
     int srclen;
     int result;
 
-    destlen = ft_strlenn(dest);
-    srclen = ft_strlenn(src);
+    destlen = ft_strlen(dest);
+    srclen = ft_strlen(src);
     if(destlen > size)
     {
         return size + srclen;

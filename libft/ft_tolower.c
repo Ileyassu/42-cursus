@@ -1,24 +1,25 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:46:08 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:46:09 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_toupper(char c)
+#include "libft.h"
+
+int ft_tolower(char c)
 {
     if(c >= 'A' && c <= 'Z')
-    {
-        return (c + 32);
-    }
+        c += 32;
+    return (c);
 }
-#include <stdio.h>
-#include <ctype.h>
-
-int main () {
-   int i = 0;
-   char c;
-   char str[] = "TUTORIALS POINT";
-	
-   while( str[i] ) {
-      putchar(tolower(str[i]));
-      i++;
-   }
-   
-   return(0);
+int main()
+{
+	char c = 'A';
+	printf("%c", ft_tolower(c));
 }

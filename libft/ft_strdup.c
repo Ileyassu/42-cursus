@@ -1,8 +1,17 @@
-#include <unistd.h>
-#include "ft_strlen.c"
-#include "ft_memcpy.c"
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:43:31 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:43:32 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
 char *ft_strdup(const char *str)
 {
     int n = ft_strlen((char *)str);
@@ -14,7 +23,6 @@ char *ft_strdup(const char *str)
     if(ptr != NULL)
     {
         ft_memcpy(ptr, str, n);
-        //printf("%s", ptr);
         ptr[n] = '\0';
         return (ptr);
 

@@ -1,12 +1,25 @@
-#include <unistd.h>
-int ft_isdigit(const char c)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:42:11 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:42:12 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int ft_isdigit(int arg)
 {
-    if(c >= '0' && c <= '9')
+    if(arg >= '0' && arg <= '9')
     {
-        return(c);
+        return (1);
     }
     else
     {
-        return(0);
+        return (0);
     }
 }

@@ -1,36 +1,55 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:42:17 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:48:29 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_itoi(int n)
+#include "libft.h"
+
+static char *checkIfZero(char *ptr)
 {
-    long long nbr;
+
+            ptr = (char *)malloc(3);
+            if(ptr == NULL)
+                return (NULL);
+            
+            *ptr = '0'; //returni 0 ila nbr = 0
+            return (ptr);
+}
+static void checkNegative(long long *nbr, int *isNeg_num)
+{
+        *nbr *= -1;
+        *isNeg_num = 1;
+}
+
+char *ft_itoi(size_t n)
+{
+    size_t nbr;
     char *ptr;
-    int temp;
-    int len;
-    int isNeg_num;
+    size_t temp;
+    size_t len;
+    size_t isNeg_num;
 
     isNeg_num = 0; //tracki sign
-    len = 0;    //hssbe length (malloc, last block)
-    if(n == 0)  //first case if it's 0
+    len = 0;    //bach an7ssb length (malloc, last block)
+    if(n == 0)  //check if n == 0
     {
-        ptr = (char *)malloc(2);
-        if(ptr == NULL)
-            return (NULL);
-        
-        *ptr = '0'; //returni 0 ila nbr = 0
-        return ptr;
+        ptr = checkIfZero(ptr); //returni ptr = '0' ila nbr = 0
+        return (ptr);
     }
     nbr = n;
     if(nbr < 0) //handli negative
-    {
-        nbr *= -1;
-        isNeg_num = 1;
-    }
+        checkNegative(&nbr, &isNeg_num);
     temp = nbr;
     while(temp > 0) //bach n7ssbo length ou ndiro 
-    {               //malloc 3la hssab chhal mne ra9m kayne
         temp /= 10;
         len++;
-    }
     ptr = (char *)malloc(len + 2);// + 2 3la 9ble negative ou '\0'
     if(ptr == NULL)
         return NULL;
@@ -44,12 +63,10 @@ char *ft_itoi(int n)
         *ptr = (nbr % 10) + '0';
         nbr /= 10;
     }
-
     if(isNeg_num)//ila kane true Y3ni negative
     {
         ptr--;
         *ptr = '-';
     }
-
     return (ptr);
 }

@@ -1,6 +1,18 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:41:46 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:41:47 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_atoi(const char *nbr)
+#include "libft.h"
+
+int ft_atoi(const char *ptr)
 {
     int negative_sign;
     int i = 0;

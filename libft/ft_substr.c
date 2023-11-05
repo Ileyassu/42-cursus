@@ -1,30 +1,43 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "ft_strlen.c"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:46:03 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:46:04 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
 char *ft_substr(char *s, unsigned int pos, size_t size)
 {
-    //return NULL ila string kane khawi
+
     if (s == NULL)
         return (NULL);
 
     char *ptr;
-    
-    size_t str_len = ft_strlen(s); //ndbro 3la length dyal s
-    int n =  size - pos; //dakchi li b9a n alloki zamlboh m3a dak ptr
+    char *strpos;
 
-    //allocating ptr
-    ptr = (char *)malloc((sizeof(char) * n) + 1); 
-    
-    if (pos >= str_len || size == 0)//safi
+    size_t str_len = ft_strlen(s);
+    if (pos > str_len || size == 0)
         return (NULL);
-
-    char *res = ptr;//pointi 3la pos dl ptr
     
-    while((n > 0) && (*(s + pos) != '\0'))
+    pos--;
+    strpos = (s + pos);
+    
+    ptr = (char *)malloc(size + 1);
+    if(ptr == NULL)
+        return NULL;
+
+    char *res = ptr;
+    
+    while((size > 0) && (*(s + pos) != '\0'))
     {
         *ptr++ = *(s + pos++);
-        n--;
+        size--;
     }
     *ptr = '\0';
     return(res);

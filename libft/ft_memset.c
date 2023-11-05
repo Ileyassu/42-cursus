@@ -1,39 +1,27 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:42:33 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:42:34 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void *ft_memset(void *ptr, int nbr, unsigned int size)
+#include "libft.h"
+
+void *ft_memset(void *str, int c, size_t n)
 {
-    unsigned char *n;
-    int            i;
+    unsigned char *ptr;
 
-    n = ptr;
-    i = 0;
-    while(i < size)
+    ptr = (unsigned char *)str;
+    while(n-- > 0 && ptr)
     {
-        n[i] = nbr;
-        i++;
+        *ptr++ = c;
     }
 
-    return (n);
+    printf("memset = %s\n", ptr);
+    return ptr;
 }
-
-#include <stdio.h>
-#include <string.h>
-#include <stdio.h>
-//include <string.h>
-
-int main() {
-    int str[20]; // Declare a character array
-
-    // Initialize the str array with 'A' character using memset
-    ft_memset(str, 5, sizeof(str));
-
-    // Print the result
-    printf("After memset: %d\n", str[2]);
-
-    return 0;
-}
-
-
-
-
-

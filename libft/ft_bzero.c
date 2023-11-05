@@ -1,15 +1,25 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 18:41:49 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/04 18:41:50 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 void ft_bzero(void *ptr, size_t size)
 {
     unsigned char *n;
-    int i;
 
     n = ptr;
-    i = 0;
-    while (i < size)
+    while (size > 0)
     {
-        n[i] = 0;
-        i++;
+        *n++ = 0;
+        size--;
     }
 }
