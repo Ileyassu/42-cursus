@@ -19,7 +19,6 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
     char *ptr;
     int length;
     int i;
-    char *func;
 
     i = 0;
     length = ft_strlen(s);

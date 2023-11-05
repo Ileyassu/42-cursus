@@ -22,20 +22,21 @@ static char *checkIfZero(char *ptr)
             *ptr = '0'; //returni 0 ila nbr = 0
             return (ptr);
 }
-static void checkNegative(long long *nbr, int *isNeg_num)
+static void checkNegative(long long *nbr, size_t *isNeg_num)
 {
         *nbr *= -1;
         *isNeg_num = 1;
 }
 
-char *ft_itoi(size_t n)
+char *ft_itoi(int n)
 {
-    size_t nbr;
+    long long nbr;
     char *ptr;
     size_t temp;
     size_t len;
     size_t isNeg_num;
 
+    ptr = NULL;
     isNeg_num = 0; //tracki sign
     len = 0;    //bach an7ssb length (malloc, last block)
     if(n == 0)  //check if n == 0
@@ -47,9 +48,11 @@ char *ft_itoi(size_t n)
     if(nbr < 0) //handli negative
         checkNegative(&nbr, &isNeg_num);
     temp = nbr;
-    while(temp > 0) //bach n7ssbo length ou ndiro 
+    while(temp > 0)
+    {
         temp /= 10;
         len++;
+    }
     ptr = (char *)malloc(len + 2);// + 2 3la 9ble negative ou '\0'
     if(ptr == NULL)
         return NULL;

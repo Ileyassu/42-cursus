@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
     const unsigned char *ptr =  (const unsigned char *)s;
     unsigned char *m = (unsigned char *)&c;
 
-    if(n < 0 || *ptr == '\0')
+    if((int)n < 0 || *ptr == '\0')
     {
         return NULL;
     }

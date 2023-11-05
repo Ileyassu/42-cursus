@@ -15,7 +15,6 @@
 static int wordLen(const char *s, char c)
 {
     int count;
-    int i;
 
     count = 0;
     while(*s && *s++ != c)
@@ -27,11 +26,9 @@ static int wordLen(const char *s, char c)
 
 static int countWords(const char *s, char c)
 {
-    int i;
     int isWord;
     int count;
 
-    i = 0;
     count = 0;
     isWord = 0;
     while(*s)
@@ -52,12 +49,10 @@ static int countWords(const char *s, char c)
 static char *ft_strndup(const char *str, int size)
 {
     char *ptr;
-    char *tmp;
     int i;
 
     i = 0;
     ptr = (char *)malloc(sizeof(char) * size + 1);
-    tmp = ptr;
     
     if(ptr != NULL)
     {
@@ -96,9 +91,8 @@ char **ft_split(const char *s, char c)
     while(i < count)
     {
         while(*s && *s == c)
-        {
-            *s++;
-        }
+            s++;
+
         wordlen = wordLen((char *)s, c);
         ptr[i] = ft_strndup((char *)s, wordlen);
         if(ptr == NULL)

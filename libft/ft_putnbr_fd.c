@@ -15,19 +15,21 @@
 void ft_putnbr_fd(int n, int fd)
 {
     size_t nbr = n;
+    int fileDescriptor;
 
-    if(nbr < 0)
+    fileDescriptor = fd;
+    if(n < 0)
     {
-        ft_putchar_fd('-', 1);
+        ft_putchar_fd('-', fileDescriptor);
         nbr *= -1;
     }
     if(nbr <= 9)
     {
-        ft_putchar_fd(nbr + '0', 1);
+        ft_putchar_fd(nbr + '0', fileDescriptor);
     }
     else
     {
-        ft_putnbr_fd(nbr / 10, 1);
-        ft_putnbr_fd(nbr % 10, 1);
+        ft_putnbr_fd(nbr / 10, fileDescriptor);
+        ft_putnbr_fd(nbr % 10, fileDescriptor);
     }
 }

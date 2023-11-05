@@ -19,14 +19,12 @@ char *ft_substr(char *s, unsigned int pos, size_t size)
         return (NULL);
 
     char *ptr;
-    char *strpos;
 
     size_t str_len = ft_strlen(s);
     if (pos > str_len || size == 0)
         return (NULL);
     
     pos--;
-    strpos = (s + pos);
     
     ptr = (char *)malloc(size + 1);
     if(ptr == NULL)

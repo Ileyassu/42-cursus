@@ -163,8 +163,12 @@ int main()
    printf( "%s\n", token[1] ); //printing the token
     char *ptr = ft_strmapi("Hello, World!", uppercase);
     printf("%s\n", ptr);
-    */
     char str[] = "hello";
     ft_striteri(str, uppercase);
     return(0);
+    */
+    char string[50] = "  Hello world w  rr";
+   // Extract the first token
+   char ** token = ft_split(string, ' ');
+   printf( "%s\n", token[1] ); //printing the token
 }
