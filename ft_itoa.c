@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoi.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:42:17 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/08 13:59:37 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:42:00 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,26 @@
 
 static char	*checkif_zero(char *ptr)
 {
-	ptr = (char *)malloc(3);
+	ptr = malloc(2);
 	if (ptr == NULL)
 		return (NULL);
-	*ptr = '0';
+	ptr[0] = '0';
+	ptr[1] = '\0';
 	return (ptr);
 }
 
-static void	check_negative(long long *nbr, size_t *isneg_num)
-{
-	*nbr *= -1;
-	*isneg_num = 1;
-}
-
-static char	*tempfunc(size_t temp, char *ptr, size_t len, long long nbr)
+static char	*isposfunc(long long temp, char *ptr, size_t len, long long nbr)
 {
 	while (temp > 0)
 	{
 		temp /= 10;
 		len++;
 	}
-	ptr = (char *)malloc(len + 2);
+	ptr = (char *)malloc(len + 1);
 	if (ptr == NULL)
-	{
 		return (NULL);
-	}
-	ptr += len + 1;
+	ptr += len;
 	*ptr = '\0';
-	ptr--;
 	while (nbr > 0)
 	{
 		ptr--;
@@ -51,28 +43,50 @@ static char	*tempfunc(size_t temp, char *ptr, size_t len, long long nbr)
 	return (ptr);
 }
 
-char	*ft_itoi(int n)
+static char	*isnegfunc(long long temp, char *ptr, size_t len, long long nbr)
+{
+	temp *= -1;
+	nbr *= -1;
+	while (temp > 0)
+	{
+		temp /= 10;
+		len++;
+	}
+	ptr = (char *)malloc(len + 2);
+	if (ptr == NULL)
+		return (NULL);
+	ptr += len + 1;
+	*ptr = '\0';
+	while (nbr > 0)
+	{
+		ptr--;
+		*ptr = (nbr % 10) + '0';
+		nbr /= 10;
+	}
+	ptr -= 1;
+	*ptr = '-';
+	return (ptr);
+}
+
+char	*ft_itoa(int n)
 {
 	long long	nbr;
 	char		*ptr;
-	size_t		temp;
+	long long	temp;
 	size_t		len;
-	size_t		isneg_num;
 
 	ptr = NULL;
-	isneg_num = 0;
 	len = 0;
 	if (n == 0)
-		return (ptr = checkif_zero(ptr));
-	nbr = n;
-	if (nbr < 0)
-		check_negative(&nbr, &isneg_num);
-	temp = nbr;
-	ptr = tempfunc(temp, ptr, len, nbr);
-	if (isneg_num)
 	{
-		ptr--;
-		*ptr = '-';
+		ptr = checkif_zero(ptr);
+		return (ptr);
 	}
+	nbr = n;
+	temp = nbr;
+	if (n < 0)
+		ptr = isnegfunc(temp, ptr, len, nbr);
+	else
+		ptr = isposfunc(temp, ptr, len, nbr);
 	return (ptr);
 }

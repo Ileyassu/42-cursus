@@ -6,31 +6,22 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:42:20 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/07 17:42:39 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:04:42 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t x)
 {
-	const unsigned char	*ptr;
-	unsigned char		*m;
+	unsigned char	*str;
 
-	m = (unsigned char *)&c;
-	ptr = (const unsigned char *)s;
-	if ((int)n < 0 || *ptr == '\0')
+	str = (unsigned char *)s;
+	while (x--)
 	{
-		return (NULL);
-	}
-	while (n > 0)
-	{
-		if (*ptr == *m)
-		{
-			return ((void *)ptr);
-		}
-		ptr++;
-		n--;
+		if (*str == (unsigned char)c)
+			return ((void *)str);
+		str++;
 	}
 	return (NULL);
 }

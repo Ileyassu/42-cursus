@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:38:54 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/09 16:17:19 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:44:45 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	countwords(const char *s, char c)
 
 	count = 0;
 	isword = 1;
+	if (s == NULL)
+		return (0);
 	while (*s)
 	{
 		if (*s != c && isword)
@@ -79,24 +81,24 @@ char	**ft_split(const char *s, char c)
 {
 	char	**ptr;
 	int		count;
-	int		wordlen;
 	int		i;
 
 	i = 0;
-	wordlen = 0;
 	count = countwords(s, c);
-	ptr = (char **)malloc(sizeof(char *) * count + 1);
+	ptr = (char **)malloc(sizeof(char *) * (count + 1));
 	if (ptr == NULL)
 		return (NULL);
 	while (i < count)
 	{
 		while (*s && *s == c)
 			s++;
-		wordlen = wordlength((char *)s, c);
-		ptr[i] = ft_strndup((char *)s, wordlen);
+		ptr[i] = ft_strndup((char *)s, wordlength((char *)s, c));
 		if (ptr[i] == NULL)
+		{
 			ft_free_arr(ptr, i);
-		s += wordlen;
+			return (NULL);
+		}
+		s += wordlength((char *)s, c);
 		i++;
 	}
 	ptr[count] = NULL;

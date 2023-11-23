@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:41:46 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/07 16:00:21 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:07:54 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,29 @@
 
 int	ft_atoi(const char *pt)
 {
-	int	negative_sign;
-	int	i;
+	int			negative_sign;
+	int			i;
 	long long	result;
 
 	result = 0;
 	i = 0;
 	negative_sign = 1;
-	    while (pt[i] == ' ' || pt[i]=='\n' || pt[i]=='\t' ||
-        pt[i]=='\v' || pt[i]=='\f' || pt[i]=='\r')
+	while (pt[i] && (pt[i] == ' ' || (pt[i] >= '\t' && pt[i] <= '\r')))
 		i++;
-	if (pt[i] == '-')
+	if (pt[i] == '-' || pt[i] == '+')
 	{
-		negative_sign *= -1;
+		if (pt[i] == '-')
+			negative_sign *= -1;
 		i++;
 	}
-	else if (pt[i] == '+')
+	while (pt[i] >= '0' && pt[i] <= '9')
 	{
+		result = result * 10 + pt[i] - 48;
 		i++;
 	}
-	while (pt[i] >= '0' && pt[i] <= '9' )
-	{
-		result *= 10;
-		if (pt[i] >= '0' && pt[i] <= '9')
-			result += pt[i] - '0';
-		else
-			return (0);
-		i++;
-	}
-
+	if (result > 9223372036854775807 && negative_sign == -1)
+		return (0);
+	else if (result < -9223372036854775807 && negative_sign == 1)
+		return (-1);
 	return (negative_sign * result);
 }

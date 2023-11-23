@@ -6,13 +6,13 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:43:44 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:35:57 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:00:16 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	int	srclen;
 

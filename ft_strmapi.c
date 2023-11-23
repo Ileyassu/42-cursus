@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:43:50 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:38:59 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:00:00 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	length = ft_strlen(s);
 	ptr = (char *)malloc(sizeof(char) * (length + 1));
-	if(ptr == NULL)
+	if (ptr == NULL)
 	{
 		free(ptr);
 		return (NULL);

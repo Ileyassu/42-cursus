@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:45:41 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:46:03 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:08:07 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	const char	*ptr;
 	const char	*haystack;
 
+	if (!big && len == 0)
+		return (NULL);
 	little_len = ft_strlen(little);
-	if (*little ==  '\0')
+	if (*little == '\0')
 		return ((char *)big);
 	while (*big && len >= little_len)
 	{

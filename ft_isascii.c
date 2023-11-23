@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:42:03 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/07 16:47:04 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:49:54 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,20 @@ int	ft_isascii(int c)
 		return (0);
 	}
 }
+/*
+int main() {
+    int currentChar;
+
+    printf("ktb chi haja wla chi haja (Ctrl+D on Unix/Linux):\n");
+
+    while ((currentChar = getchar()) != EOF) {
+        if (ft_isascii(currentChar) == 1) {
+            printf("'%c' is ascii.\n", currentChar);
+        } else if (ft_isascii(currentChar) == 0) {
+            printf("'%c' is not ascii.\n", currentChar);
+        }
+    }
+
+    return 0;
+}
+*/

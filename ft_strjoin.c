@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:43:38 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:32:12 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:00:49 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t		strings_length;
-	size_t strlen1;
-	size_t strlen2;
+	size_t	strings_length;
+	size_t	strlen1;
+	size_t	strlen2;
 	char	*ptr;
 	char	*result;
 
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	else if (s1 && !s2)
+		return (ft_strdup(s1));
+	else if (!s1 && !s2)
+		return (NULL);
 	strlen1 = ft_strlen(s1);
 	strlen2 = ft_strlen(s2);
 	strings_length = strlen1 + strlen2;

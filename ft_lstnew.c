@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 18:43:41 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/21 22:00:31 by ibenaiss         ###   ########.fr       */
+/*   Created: 2023/11/13 11:08:38 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/11/14 07:45:28 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t n)
+t_list *ft_lstnew(void *content)
 {
-	size_t	i;
-	size_t	j;
+    t_list  *newnode;
 
-	if (!dst && !n && src)
-		return (ft_strlen(src));
-	i = 0;
-	j = 0;
-	while (dst[i] != '\0' && i < n)
-		i++;
-	while (src[j] != '\0' && (i + j + 1) < n)
-	{
-		dst[i + j] = src[j];
-		j++;
-	}
-	if (i < n)
-		dst[i + j] = '\0';
-	return (i + ft_strlen(src));
+    newnode = (t_list *)malloc(sizeof(t_list));
+    if(newnode)
+    {
+        newnode -> next = NULL;
+        newnode -> content = content;
+        return (newnode);
+    }
+    return (newnode);
 }

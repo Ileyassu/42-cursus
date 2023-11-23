@@ -6,18 +6,18 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:43:47 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:36:53 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:59:45 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (str && str[i])
+	while (str[i])
 	{
 		i++;
 	}

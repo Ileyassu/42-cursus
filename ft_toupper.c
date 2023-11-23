@@ -6,20 +6,16 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:46:10 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:56:20 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:58:42 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(char c)
+int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
-	{
+	if (c >= 97 && c <= 122)
 		return (c - 32);
-	}
 	else
-	{
 		return (c);
-	}
 }
