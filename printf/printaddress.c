@@ -23,8 +23,8 @@ int printaddress(unsigned long *n)
         size--;
         count++;
     }
+    free(base);
     write(1, "0x", 2);
     write(1, address, sizeof(address));
-
     return (count);
 }

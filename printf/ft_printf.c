@@ -18,6 +18,8 @@ void behindthescene(va_list ap, char c)
 		printaddress(va_arg(ap, unsigned long *));
 	else if(c == 'u')
 		unsigned_putnbr(va_arg(ap, unsigned int));
+	else if(c == '%')
+		ft_putchar('%');
 
 	//return (count);
 }
@@ -47,7 +49,7 @@ int ft_printf(char *str, ...)
 
 int main()
 {
-	int n = 42;
-	ft_printf("%u\n", n);
-	printf("%u\n", n);
+	//int n = 42;
+	//ft_printf("%%%");
+	ft_printf("%%%");
 }
