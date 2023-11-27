@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:38 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 18:17:40 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/27 18:20:57 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int behindthescene(va_list ap, char c)
 	else if(c == 'p')
 		count = printaddress(va_arg(ap, unsigned long *));
 	else if(c == 'u')
-		unsigned_putnbr(va_arg(ap, unsigned int));
+		count = unsigned_putnbr(va_arg(ap, unsigned int));
 	else if(c == 'X')
 		count = ultra_hexabase(va_arg(ap, int)) - 2;
 	else if(c == '%')
@@ -67,6 +67,6 @@ int ft_printf(char *str, ...)
 int main()
 {
 	//int n = 0;
-	int i = printf("%s\n", "10");
+	int i = printf("%u", 10);
 	printf("%d\n", i);
 }
