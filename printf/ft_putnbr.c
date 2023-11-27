@@ -1,20 +1,5 @@
 #include "ft_printf.h"
 
-static int	count_digits(int nb)
-{
-	int	digits;
-
-	digits = 0;
-	if (nb <= 0)
-		digits++;
-	while (nb)
-	{
-		digits++;
-		nb /= 10;
-	}
-	return (digits);
-}
-
 int ft_putnbr(int n)
 {
     long long nbr;

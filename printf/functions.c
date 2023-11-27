@@ -1,5 +1,20 @@
 #include "ft_printf.h"
 
+int	count_digits(int nb)
+{
+	int	digits;
+
+	digits = 0;
+	if (nb <= 0)
+		digits++;
+	while (nb)
+	{
+		digits++;
+		nb /= 10;
+	}
+	return (digits);
+}
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;

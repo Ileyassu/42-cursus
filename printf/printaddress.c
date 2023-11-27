@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printaddress.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/27 00:12:19 by ilyas             #+#    #+#             */
+/*   Updated: 2023/11/27 00:12:20 by ilyas            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-#include<stdlib.h>
 
 int printaddress(unsigned long *n)
 {
@@ -10,10 +21,8 @@ int printaddress(unsigned long *n)
     int count;
 
     count = 0;
-    base = (char *)malloc(17);
     base = "0123456789abcdef";
     size = sizeof(address);
-    //nbr = (unsigned long) ptr;
     address[size] = '\0';
     size--;
     while(nbr > 0)
@@ -23,7 +32,6 @@ int printaddress(unsigned long *n)
         size--;
         count++;
     }
-    free(base);
     write(1, "0x", 2);
     write(1, address, sizeof(address));
     return (count);
