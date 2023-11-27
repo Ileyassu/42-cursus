@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:38 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 12:51:40 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/27 14:54:29 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,15 @@ int behindthescene(va_list ap, char c)
 	else if(c == 'i')
 		ft_putnbr(va_arg(ap, int));
 	else if(c == 'x')
-		count = hexabase(va_arg(ap, int));
+		count = hexabase(va_arg(ap, int)) - 1;
 	else if(c == 'p')
-		printaddress(va_arg(ap, unsigned long *));
+		count = printaddress(va_arg(ap, unsigned long *));
 	else if(c == 'u')
 		unsigned_putnbr(va_arg(ap, unsigned int));
 	else if(c == 'X')
-		count = ultra_hexabase(va_arg(ap, int));
+		count = ultra_hexabase(va_arg(ap, int) - 1);
 	else if(c == '%')
 		ft_putchar('%');
-
 	return (count);
 }
 int ft_printf(char *str, ...)
@@ -67,8 +66,7 @@ int ft_printf(char *str, ...)
 
 int main()
 {
-	//int n = 42;
-	//printf("%%%%%%%\n");
-	int i = ft_printf("%x\n", 10);
-	ft_printf("%d\n", i);
+	int n = 0;
+	int i = ft_printf("%p\n", &n);
+	printf("%d\n", i);
 }

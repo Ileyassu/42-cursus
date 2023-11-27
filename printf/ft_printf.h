@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:21 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 12:15:28 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/27 14:45:58 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int ft_putnbr(int n);
 int printaddress(unsigned long *n);
 int ft_printf(char *str, ...);
 char	*ft_strchr(const char *str, int c);
-int hexabase(int nbr);
-int ultra_hexabase(int nbr);
+int hexabase(unsigned int nbr);
+int ultra_hexabase(unsigned int nbr);
 size_t	ft_strlen(const char *str);
-int	count_digits(int nb);
+int	count_digits(unsigned int nb);
 #endif

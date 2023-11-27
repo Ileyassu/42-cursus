@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	count_digits(int nb)
+int	count_digits(unsigned int nb)
 {
 	int	digits;
 
