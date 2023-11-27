@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:13:05 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 14:31:20 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/27 18:10:35 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,11 @@ int ultra_hexabase(unsigned int nbr)
     int count = ft_putnbr_base(nbr, "0123456789ABCDEF");
     return (count);
 }
+/*
+int main()
+{
+	//int n = 0;
+	int i = hexabase(10);
+	printf("%d\n", i);
+}
+*/
