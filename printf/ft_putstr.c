@@ -6,12 +6,11 @@ int ft_putstr(char *s)
     int count;
 
     i = 0;
-    count = 0;
+    count = ft_strlen(s);
     while(s[i])
     {
         ft_putchar(s[i]);
         i++;
-        count++;
     }
     return (count);
 }
