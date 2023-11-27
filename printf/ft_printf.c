@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:38 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 18:23:31 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/27 20:27:44 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,4 @@ int ft_printf(char *str, ...)
 		i++;
 	}
 	return count;
-}
-
-int main()
-{
-	//int n = 0;
-	int i = printf("%%");
-	printf("%d\n", i);
 }
