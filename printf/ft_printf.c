@@ -6,13 +6,12 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:38 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 20:27:44 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/27 22:05:12 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include<stdlib.h>
-
 int behindthescene(va_list ap, char c)
 {
 	int count;
@@ -63,3 +62,13 @@ int ft_printf(char *str, ...)
 	}
 	return count;
 }
+/*
+int main()
+{
+	int a;
+	int i = ft_printf("%d %s %c %p %% %i %x\n", ft_printf("lolololo  "), "hioh", 'c', &a, 2, 10);
+	int b = printf("%d %s %c %p %% %i %x\n", ft_printf("lolololo  "), "hioh", 'c', &a, 2, 10);
+	printf("dyali : %d\n", i);
+	printf("dyalhhom : %d\n", b);
+}
+*/
