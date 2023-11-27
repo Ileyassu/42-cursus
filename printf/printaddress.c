@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:19 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 00:12:20 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/27 15:15:13 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int printaddress(unsigned long *n)
     }
     write(1, "0x", 2);
     write(1, address, sizeof(address));
-    return (count);
+    return (count + 2);
 }

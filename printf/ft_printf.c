@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:38 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 14:54:29 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/27 15:16:53 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int ft_printf(char *str, ...)
 	{
 		if (str[i] == '%' && ft_strchr("cspdiuxX%", (str[i + 1])))
 		{
-			count = behindthescene(ap, str[i + 1]);
+			count += behindthescene(ap, str[i + 1]);
 			if(str[i + 1] != '\0')
 				i++;
 		}
 		else
 		{
-			ft_putchar(str[i]);
+			count += ft_putchar(str[i]);
 		}
 		i++;
 	}
@@ -68,5 +68,5 @@ int main()
 {
 	int n = 0;
 	int i = ft_printf("%p\n", &n);
-	printf("%d\n", i);
+	ft_printf("%d\n", i);
 }
