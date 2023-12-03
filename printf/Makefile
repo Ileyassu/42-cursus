@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+         #
+#    By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 20:29:01 by ilyas             #+#    #+#              #
-#    Updated: 2023/11/27 20:29:02 by ilyas            ###   ########.fr        #
+#    Updated: 2023/12/01 18:14:35 by ibenaiss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,12 @@ NAME = libftprintf.a
 all : $(NAME)
 
 $(NAME) : $(OBJ) $(SRC)
-	$(AR) $(NAME) $(OBJ)
+	$(AR) $(NAME) $?
 
 fclean : clean
 	$(RM) -f $(NAME)
 
 clean :
-	$(RM) -f $(OBJ) $(OBJ_BONUS)
+	$(RM) -f $(OBJ)
 
 re : fclean all

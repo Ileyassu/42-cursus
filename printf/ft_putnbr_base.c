@@ -3,48 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:13:05 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 20:26:59 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/30 17:21:16 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_putnbr_base(unsigned int nbr, char *base)
+int	ft_putnbr_base(unsigned long n, int base, int uppercase)
 {
-    unsigned int len;
-    char c;
-    int count;
-    
-    len = ft_strlen(base);
-    count = count_digits(nbr);
-    if(nbr <= len)
-    {
-        c = base[nbr];
-        count++;
-        ft_putchar(c);
-    }
-    else
-    {
-        ft_putnbr_base(nbr / len, base);
-        ft_putnbr_base(nbr % len, base);
-    }
-    return (count);
-}
+	int		count;
+	char	*b;
 
-int hexabase(unsigned int nbr)
-{
-    int count;
-    
-    count = ft_putnbr_base(nbr, "0123456789abcdef");
-    return (count);
-}
-int ultra_hexabase(unsigned int nbr)
-{
-    int count;
-    
-    count = ft_putnbr_base(nbr, "0123456789ABCDEF");
-    return (count);
+	count = 0;
+	if (uppercase == 1)
+		b = "0123456789ABCDEF";
+	else
+		b = "0123456789abcdef";
+	if (n < 0)
+	{
+		ft_putchar('-');
+		count += ft_putnbr_base(-n, base, uppercase) + 1;
+	}
+	else if (n >= (unsigned int)base)
+	{
+		count = ft_putnbr_base(n / base, base, uppercase);
+		count += ft_putchar(b[n % base]);
+	}
+	else
+		count += ft_putchar(b[n]);
+	return (count);
 }

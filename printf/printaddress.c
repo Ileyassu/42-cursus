@@ -3,36 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   printaddress.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:19 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 16:27:11 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/30 17:27:11 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int printaddress(unsigned long *n)
+static int	print_hex(unsigned long num, char *base)
 {
-    unsigned long nbr = (unsigned long)n;
-    char address[20];
-    char *base;
-    int size;
-    int count;
+	int	count;
 
-    count = 0;
-    base = "0123456789abcdef";
-    size = sizeof(address);
-    address[size] = '\0';
-    size--;
-    while(nbr > 0)
-    {
-        address[size] = base[nbr % 16];
-        nbr /= 16;
-        size--;
-        count++;
-    }
-    write(1, "0x", 2);
-    write(1, address, sizeof(address));
-    return (count + 2);
+	count = 0;
+	if (num >= 16)
+	{
+		count += print_hex(num / 16, base);
+		count += ft_putchar(base[num % 16]);
+	}
+	else
+		count += ft_putchar(base[num % 16]);
+	return (count);
+}
+
+int	ft_putaddr(void *ptr)
+{
+	char	*base;
+	int		count;
+
+	base = "0123456789abcdef";
+	count = 0;
+	count += ft_putstr("0x");
+	count += print_hex((unsigned long)ptr, base);
+	return (count);
 }

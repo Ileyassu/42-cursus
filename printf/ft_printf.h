@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:21 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/27 14:45:58 by ilyas            ###   ########.fr       */
+/*   Updated: 2023/11/30 17:23:54 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-int unsigned_putnbr(unsigned int nbr);
-int ft_putchar(char c);
-int ft_putstr(char *s);
-int ft_putnbr(int n);
-int printaddress(unsigned long *n);
-int ft_printf(char *str, ...);
+# define FT_PRINTF_H
+# include <limits.h>
+# include <stdarg.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+
+int		unsigned_putnbr(unsigned int nbr);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
+int		ft_putnbr(int n);
+int		ft_putaddr(void *ptr);
+int		ft_printf(const char *str, ...);
 char	*ft_strchr(const char *str, int c);
-int hexabase(unsigned int nbr);
-int ultra_hexabase(unsigned int nbr);
+int		ft_putnbr_base(unsigned long n, int base, int uppercase);
 size_t	ft_strlen(const char *str);
-int	count_digits(unsigned int nb);
+int		count_digits(unsigned int nb);
 #endif
