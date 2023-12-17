@@ -1,0 +1,78 @@
+# Born2BeRoot 42/21 Walkthrough
+
+## Introduction
+Welcome to the Born2BeRoot 42/21 walkthrough, where we embrace the dark side of virtualization mastery! This guide is crafted to help you navigate through the installation and configuration process on Debian. Let the journey begin!
+
+### Step 0 - Download
+1. Download the [Debian Small Netinstaller](https://www.debian.org/CD/netinst/) or use the latest stable release you've already downloaded.
+
+### Step 1 - VM Settings
+- Create a new VM in VirtualBox with the following settings:
+  - Name: Choose anything
+  - Machine Folder: goinfre/VirtualBox VMs/ (or any location)
+  - Type: Linux
+  - Version: Debian 64-bit
+  - RAM: 1024 MB
+  - Virtual Hard Disk: VDI, Fixed size, 8GB
+
+### Step 2 - Installation
+1. Start the VM and choose the non-graphical installation.
+2. Follow the installation prompts, set hostname, root password, and user details.
+3. Partition Setup:
+   - Guided - Use entire disk and set up encrypted LVM for basic part.
+   - For the bonus part, use Manual partitioning with LVM and separate /home.
+4. Configure the package manager and complete the installation.
+
+### Step 3 - Configure Your Machine
+#### Substep 3.1 - Installing sudo & Adding User to Groups
+```bash
+su -
+apt install sudo
+adduser ibenaiss sudo
+sudo reboot
+sudo -v
+sudo addgroup user42
+sudo adduser ibenaiss user42
+sudo apt update
+
+Substep 3.2 - Installing SSH
+
+sudo apt install openssh-server
+sudo nano /etc/ssh/sshd_config
+# Change Port to 4242, and PermitRootLogin to no
+sudo nano /etc/ssh/ssh_config
+# Change Port to 4242
+sudo service ssh status
+
+Substep 3.3 - Installing UFW
+
+sudo apt install ufw
+sudo ufw enable
+sudo ufw allow 4242
+sudo ufw status
+
+Substep 3.4 - Configuring sudo
+
+sudo touch /etc/sudoers.d/sudoconfig
+sudo mkdir /var/log/sudo
+sudo nano /etc/sudoers.d/sudoconfig
+# Add sudo configuration lines
+
+Substep 3.5 - Setting Up a Strong Password Policy
+
+sudo nano /etc/login.defs
+# Update PASS_MAX_DAYS and PASS_MIN_DAYS
+sudo apt install libpam-pwquality
+sudo nano /etc/pam.d/common-password
+# Add parameters for password quality
+
+Step 4 - Network Adapter Configuration
+Turn off the VM (sudo shutdown).
+In VirtualBox settings, configure port forwarding for SSH (localhost:4242).
+SSH into your VM from the host machine: ssh <vmusername>@localhost -p 4242.
+Conclusion
+You've completed the setup! Remember to make a clone or snapshot of your VM before evaluation. For the final touch, install net-tools as listed in the monitoring.sh file.
+
+Now, you're almost ready for evaluation. Sort out the questions listed in the subject or check the evalknowledge.txt file. May the force be with you!
+
+Happy hacking! 🐧💻🚀

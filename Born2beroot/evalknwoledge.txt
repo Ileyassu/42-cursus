@@ -1,0 +1,71 @@
+
+
+🌐 Born2beroot Evaluation Q&A by @ileyassu 🚀
+
+🤔 Why Debian?
+A: Debian was my go-to choice due to its ease of installation and configuration, especially compared to CentOS, which I hadn't used before.
+
+🧠 What's a Virtual Machine (VM)?
+A: A VM is a virtualized compute resource that runs software instead of a physical computer, allowing different operating systems to function independently on the same host.
+
+🚀 Purpose of VMs?
+A: VMs serve various purposes, from accommodating different processing power needs to running software requiring a different OS, or providing a safe environment for application testing.
+
+💻 How do VMs work?
+A: VMs leverage virtualization technology, simulating virtual hardware through software, enabling them to run on a single host machine.
+
+🔄 aptitude vs. apt?
+A: Aptitude is a high-level package manager, while apt is a lower-level package manager usable by other higher-level package managers. Read more
+
+🔒 What is AppArmor?
+A: AppArmor is a Linux kernel security module that restricts program capabilities with per-program profiles. Learn more
+
+🌐 What is SSH?
+A: SSH (Secure Shell) is a network protocol providing secure access to a computer over an unsecured network. Explore
+
+👤 Creating a New User (@ileyassu):
+
+bash
+Copy code
+$ sudo adduser username
+$ sudo chage -l username
+$ sudo adduser username sudo
+$ sudo adduser username user42
+💻 How Does the Script Work?
+Check out the detailed guide in the README.md file.
+
+🔍 Additional Checks (by @ileyassu):
+
+Change Hostname:
+
+bash
+
+$ sudo nano /etc/hostname
+Sudo Logs in /var/log/sudo:
+
+bash
+
+$ cd /var/log/sudo/00/00 && ls
+$ sudo apt update
+$ ls
+$ cd <nameofnewdirectory> && ls
+$ cat log  # Input log
+$ cat ttyout  # Output log
+Add and Remove Port 8080 in UFW:
+
+bash
+
+$ sudo ufw allow 8080  # Allow
+$ sudo ufw status  # Check
+$ sudo ufw deny 8080  # Deny
+Run Script Every 30 Seconds:
+
+bash
+
+$ sudo crontab -e
+# Add the following lines:
+*/1 * * * * /path/to/monitoring.sh
+*/1 * * * * sleep 30s && /path/to/monitoring.sh
+# To stop script on boot, remove or comment out:
+# @reboot /path/to/monitoring.sh
+Feel free to connect with me on GitHub for more tech adventures and collaborations! 🚀🔗
