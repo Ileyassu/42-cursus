@@ -15,7 +15,7 @@ I am a student at [42](https://www.42.fr/) (1337 campus) with a passion for prog
 
 ### 3. [Born2beroot](https://github.com/Ileyassu/42-cursus/tree/main/Born2beroot)
 
-[ft_printf](https://github.com/Ileyassu/42-cursus/tree/main/printf). in this project Born2beroot is a virtualization masterpiece, where I dived deep into the world of Linux. 🐧✨ I crafted a virtual machine from scratch, handling everything from minimal installation to configuring partitions and LVM.
+[Born2beroot](https://github.com/Ileyassu/42-cursus/tree/main/printf). in this project Born2beroot is a virtualization masterpiece, where I dived deep into the world of Linux. 🐧✨ I crafted a virtual machine from scratch, handling everything from minimal installation to configuring partitions and LVM.
 
 - [LinkedIn](https://www.linkedin.com/in/ilyas-benaissa-27549b195/).
 
