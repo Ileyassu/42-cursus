@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 18:09:29 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/12/22 19:56:46 by ibenaiss         ###   ########.fr       */
+/*   Created: 2023/12/22 18:09:39 by ibenaiss          #+#    #+#             */
+/*   Updated: 2023/12/22 18:47:54 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,15 @@ static char	*ft_backup(char *var)
 
 char	*get_next_line(int fd)
 {
-	static char	*var;
+	static char	*var[1025];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
 		return (NULL);
-	var = get_static_var(fd, var);
-	if (!var)
+	var[fd] = get_static_var(fd, var[fd]);
+	if (!var[fd])
 		return (NULL);
-	line = cutline(var);
-	var = ft_backup(var);
+	line = cutline(var[fd]);
+	var[fd] = ft_backup(var[fd]);
 	return (line);
 }
