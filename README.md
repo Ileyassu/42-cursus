@@ -18,11 +18,11 @@ I am a student at [42](https://www.42.fr/) (1337 campus) with a passion for prog
 
 [Born2beroot](https://github.com/Ileyassu/42-cursus/tree/main/Born2beroot). in this project Born2beroot is a virtualization masterpiece, where I dived deep into the world of Linux. 🐧✨ I crafted a virtual machine from scratch, handling everything from minimal installation to configuring partitions and LVM.
 
-
-
-Feel free to explore my repositories, and I'm always open to collaboration and feedback. Happy coding! 🚀
-
 ### 4. [Get_next_line](https://github.com/Ileyassu/42-cursus/tree/main/getnextline)
 
 [Born2beroot](https://github.com/Ileyassu/42-cursus/tree/main/getnextline). In my "Get Next Line" project, I explored the intricacies of file I/O operations, memory management, and static variables in C. 📄💻 Leveraging the open function, I obtained file descriptors and efficiently read data using read. Dynamic memory allocation with malloc ensured adaptability to varying line lengths, while free prevented memory leaks.
 Static variables maintained state across function calls, contributing to the functionality of the "get next line" operation. Understanding the memory layout, particularly the Data Segment and BSS, further enriched my grasp of C programming.
+
+### 5. [Minitalk](https://github.com/Ileyassu/42-cursus/tree/main/Minitalk)
+
+[Minitalk](https://github.com/Ileyassu/42-cursus/tree/main/getnextline). Minitalk is a fascinating project that delves into the realm of inter-process communication using signals in the C programming language. This project enables seamless messaging between a client and a server, leveraging the power of signals.
