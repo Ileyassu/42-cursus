@@ -1,5 +1,11 @@
-SRC = \
-	so_long.c
+SRC =	\
+	so_long.c \
+	src/ft_memcpy.c \
+	src/ft_split.c \
+	src/extract_ber.c \
+	src/map_to_window.c \
+	getnextline/get_next_line.c \
+	getnextline/get_next_line_utils.c
 
 NAME = so_long
 
@@ -7,18 +13,16 @@ RM = rm
 
 OBJ = $(SRC:.c=.o)
 
-MINILIBX = minilibx/libmlx.a
+MINILIBX = minilibx-linux/libmlx_Linux.a
 
 CFLAGS = -Wall -Wextra -Werror
 
 AR = ar rcs
 
-
 all : $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-
 
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -Imlx -c $< -o $@
