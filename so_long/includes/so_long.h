@@ -11,6 +11,10 @@
 #define BUFFER_SIZE 3
 #define IMG_H 30
 #define IMG_W 30
+#define UP 119
+#define DOWN 115
+#define LEFT 97
+#define RIGHT 100
 
 typedef struct s_img
 {
@@ -20,13 +24,6 @@ typedef struct s_img
 	void	*player_down;
 	void	*background;
 }				t_img;
-
-typedef struct s_player
-{
-    int x;
-    int y;
-    void *img;
-}  t_player;
 
 typedef struct s_map
 {
@@ -53,5 +50,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	**ft_split(const char *s, char c);
 void map_adder(t_mlx *mlx);
 void extract_ber(t_mlx *mlx, t_map *map);
+char	*ft_strchr(const char *str, int c);
 
 #endif

@@ -57,7 +57,6 @@ void map_adder(t_mlx *mlx)
             else if(mlx->map->tiles[y][x] == '0')
             {
                 mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->background, x* 30 , y * 30 );
-                //mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->map->img, x * 30, y * 30 );
             }
 
             x++;

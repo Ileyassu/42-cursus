@@ -3,7 +3,10 @@ SRC =	\
 	src/ft_memcpy.c \
 	src/ft_split.c \
 	src/extract_ber.c \
+	src/ft_strchr.c \
 	src/map_to_window.c \
+	src/move.c \
+	src/input_hooks.c \
 	getnextline/get_next_line.c \
 	getnextline/get_next_line_utils.c
 

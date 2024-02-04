@@ -4,6 +4,7 @@ int main()
 {
     t_mlx mlx;
     mlx.map = malloc(sizeof(t_map));
+    mlx.img = malloc(sizeof(t_img));
     mlx.map->tiles = NULL;
     extract_ber(&mlx, mlx.map);    
     printf("%d\n",mlx.height);
