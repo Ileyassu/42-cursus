@@ -7,6 +7,8 @@ static void put_objects(t_mlx *mlx)
     mlx->img->player_right = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/right.xpm", &mlx->map->width, &mlx->map->height);
     mlx->img->player_down = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/down.xpm", &mlx->map->width, &mlx->map->height);
     mlx->img->background = mlx_xpm_file_to_image(mlx->mlx, "./tiles/map_build/ground.xpm", &mlx->map->width, &mlx->map->height);
+    mlx->img->salah = mlx_xpm_file_to_image(mlx->mlx, "./tiles/map_build/salah.xpm", &mlx->map->width, &mlx->map->height);
+    mlx->img->drhm = mlx_xpm_file_to_image(mlx->mlx, "./tiles/coin/drhm.xpm", &mlx->map->width, &mlx->map->height);
     mlx->map->img = mlx_xpm_file_to_image(mlx->mlx, "./tiles/map_build/rock.xpm", &mlx->map->width, &mlx->map->height);
     mlx->p_img = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/down.xpm", &mlx->map->width, &mlx->map->height);
 }
@@ -52,6 +54,10 @@ void map_adder(t_mlx *mlx)
                 mlx->p_y = y;
                 mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->p_img, x* 30 , y * 30 );
             }
+            else if(mlx->map->tiles[y][x] == 'C')
+                mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->drhm, x* 30 , y * 30 );
+            else if(mlx->map->tiles[y][x] == 'E')
+                mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->salah, x* 30 , y * 30 );
             x++;
         }
         y++;

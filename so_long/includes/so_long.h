@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include "../printf/ft_printf.h"
 #include "../minilibx-linux/mlx.h"
 #include "../getnextline/get_next_line.h"
 
@@ -28,7 +29,9 @@ typedef struct s_img
 	void	*player_left;
 	void	*player_right;
 	void	*player_down;
+    void    *drhm;
 	void	*background;
+    void	*salah;
 }				t_img;
 
 typedef struct s_map
@@ -49,6 +52,7 @@ typedef struct s_mlx
     int p_x;
     int p_y;
     void *p_img;
+    int count_drhm;
     t_map *map;
     t_img *img;
 }   t_mlx;

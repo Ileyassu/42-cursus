@@ -40,22 +40,22 @@ static void	ft_player_move(t_mlx *mlx, char position, int direction)
 void	move_player(t_mlx *mlx, char pos, int dir)
 /* will check if a move is valid and move the player if valid */
 {
-	if (pos == 'y' && dir == UP && mlx->map->tiles[mlx->p_y - 1][mlx->p_x] != '1')
+	if (pos == 'y' && dir == UP && mlx->p_y - 1 >= 0 && mlx->map->tiles[mlx->p_y - 1][mlx->p_x] != '1')
 	{
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
 	}
-	else if (pos == 'x' && dir == LEFT && mlx->map->tiles[mlx->p_y][mlx->p_x - 1] != '1')
+	else if (pos == 'x' && dir == LEFT && mlx->p_x - 1 >= 0 && mlx->map->tiles[mlx->p_y][mlx->p_x - 1] != '1')
 	{
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
 	}
-	else if (pos == 'y' && dir == DOWN && mlx->map->tiles[mlx->p_y + 1][mlx->p_x] != '1')
+	else if (pos == 'y' && dir == DOWN && mlx->p_y + 1 < mlx->map->height && mlx->map->tiles[mlx->p_y + 1][mlx->p_x] != '1')
 	{
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
 	}
-	else if (pos == 'x' && dir == RIGHT && mlx->map->tiles[mlx->p_y][mlx->p_x + 1] != '1')
+	else if (pos == 'x' && dir == RIGHT && mlx->p_x + 1 < mlx->map->width && mlx->map->tiles[mlx->p_y][mlx->p_x + 1] != '1')
 	{
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);

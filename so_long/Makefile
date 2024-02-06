@@ -7,7 +7,15 @@ SRC =	\
 	src/move.c \
 	src/ft_key_hook.c \
 	getnextline/get_next_line.c \
-	getnextline/get_next_line_utils.c
+	getnextline/get_next_line_utils.c \
+	printf/ft_printf.c \
+	printf/ft_putchar.c \
+	printf/ft_putnbr_base.c \
+	printf/ft_putnbr.c \
+	printf/ft_putstr.c \
+	printf/functions.c \
+	printf/printaddress.c \
+	printf/the_unsigned_thing.c
 
 NAME = so_long
 
