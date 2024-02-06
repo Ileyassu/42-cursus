@@ -37,7 +37,6 @@ typedef struct s_img
 typedef struct s_map
 {
     void *img;
-    void *tree;
     int width;
     int height;
     char **tiles;

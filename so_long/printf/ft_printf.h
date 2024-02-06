@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:21 by ilyas             #+#    #+#             */
-/*   Updated: 2024/02/06 21:00:49 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/06 21:27:33 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <string.h>
 # include <unistd.h>
 # include "../printf/ft_printf.h"
-//# include "../getnextline/get_next_line.h"
+# include "../getnextline/get_next_line.h"
 
 int		unsigned_putnbr(unsigned int nbr);
 int		ft_putchar(char c);
