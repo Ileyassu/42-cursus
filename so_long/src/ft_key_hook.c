@@ -4,9 +4,9 @@ int	ft_key_hook(int keycode, t_mlx *mlx)
 /* will cause the different actions of the valid key presses
 ** will cause you to window if you reached the exit */
 {
-	/*if (keycode == ESC)
+	if (keycode == ESC)
 		ft_exit(mlx);
-	else*/ if (keycode == W){
+	else if (keycode == W){
 		move_player(mlx, 'y', UP);}
 	else if (keycode== A)
 		move_player(mlx, 'x', LEFT);

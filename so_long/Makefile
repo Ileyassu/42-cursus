@@ -6,7 +6,6 @@ SRC =	\
 	src/map_to_window.c \
 	src/move.c \
 	src/ft_key_hook.c \
-	src/input_hooks.c \
 	getnextline/get_next_line.c \
 	getnextline/get_next_line_utils.c
 

@@ -16,7 +16,7 @@
 #define LEFT -1
 #define RIGHT 1
 
-# define ESC 53
+# define ESC 65307
 # define W 119
 # define A 97
 # define S 115
@@ -58,6 +58,7 @@ char	**ft_split(const char *s, char c);
 void map_adder(t_mlx *mlx);
 void extract_ber(t_mlx *mlx, t_map *map);
 int	ft_key_hook(int keycode, t_mlx *mlx);
+int ft_exit(t_mlx *mlx);
 void	move_player(t_mlx *mlx, char pos, int dir);
 
 #endif
