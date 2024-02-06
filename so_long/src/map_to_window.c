@@ -2,6 +2,10 @@
 
 static void put_objects(t_mlx *mlx)
 {
+    mlx->img->player_up = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/up.xpm", &mlx->map->width, &mlx->map->height);
+    mlx->img->player_left = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/left.xpm", &mlx->map->width, &mlx->map->height);
+    mlx->img->player_right = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/right.xpm", &mlx->map->width, &mlx->map->height);
+    mlx->img->player_down = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/down.xpm", &mlx->map->width, &mlx->map->height);
     mlx->img->background = mlx_xpm_file_to_image(mlx->mlx, "./tiles/map_build/ground.xpm", &mlx->map->width, &mlx->map->height);
     mlx->map->img = mlx_xpm_file_to_image(mlx->mlx, "./tiles/map_build/rock.xpm", &mlx->map->width, &mlx->map->height);
     mlx->p_img = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/down.xpm", &mlx->map->width, &mlx->map->height);
