@@ -1,6 +1,6 @@
 [![Build](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml)
 
-This is the MinilibX, a simple X-Window (X11R6) programming API
+This is the MinilibX, a simple X-window (X11R6) programming API
 in C, designed for students, suitable for X-beginners.
 
 

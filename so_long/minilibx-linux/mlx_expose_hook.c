@@ -14,9 +14,9 @@
 
 
 
-int		mlx_expose_hook(t_win_list *win,int (*funct)(),void *param)
+int		mlx_expose_hook(t_window_list *window,int (*funct)(),void *param)
 {
-  win->hooks[Expose].hook = funct;
-  win->hooks[Expose].param = param;
-  win->hooks[Expose].mask = ExposureMask;
+  window->hooks[Expose].hook = funct;
+  window->hooks[Expose].param = param;
+  window->hooks[Expose].mask = ExposureMask;
 }

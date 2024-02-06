@@ -16,7 +16,7 @@ MiniLibX - Handle events
 .fi
 .B mlx_key_hook
 (
-.I void *win_ptr, int (*funct_ptr)(), void *param
+.I void *window_ptr, int (*funct_ptr)(), void *param
 );
 
 .nf
@@ -24,7 +24,7 @@ MiniLibX - Handle events
 .fi
 .B mlx_mouse_hook
 (
-.I void *win_ptr, int (*funct_ptr)(), void *param
+.I void *window_ptr, int (*funct_ptr)(), void *param
 );
 
 .nf
@@ -32,7 +32,7 @@ MiniLibX - Handle events
 .fi
 .B mlx_expose_hook
 (
-.I void *win_ptr, int (*funct_ptr)(), void *param
+.I void *window_ptr, int (*funct_ptr)(), void *param
 );
 
 .nf
@@ -43,9 +43,9 @@ MiniLibX - Handle events
 .I void *mlx_ptr, int (*funct_ptr)(), void *param
 );
 
-.SH X-WINDOW EVENTS
+.SH X-window EVENTS
 
-The X-Window system is bi-directionnal. On one hand, the program sends orders to
+The X-window system is bi-directionnal. On one hand, the program sends orders to
 the screen to display pixels, images, and so on. On the other hand,
 it can get information from the keyboard and mouse associated to
 the screen. To do so, the program receives "events" from the keyboard or the
@@ -62,7 +62,7 @@ A single parameter is needed, the connection identifier
 (see the
 .B mlx manual).
 
-You can assign different functions to the three following events:
+You can assign different functions to the three followindowg events:
 .br
 - A key is pressed
 .br
@@ -84,7 +84,7 @@ The three functions
 .I funct_ptr
 is a pointer to the function you want to be called
 when an event occurs. This assignment is specific to the window defined by the
-.I win_ptr
+.I window_ptr
 identifier. The
 .I param
 adress will be passed to the function everytime it is called, and should be
@@ -124,7 +124,7 @@ tells you which key is pressed (look for the X11 include file "keysymdef.h"),
 tells you which mouse button was pressed.
 
 .SH GOING FURTHER WITH EVENTS
-The MiniLibX provides a much generic access to all X-Window events. The
+The MiniLibX provides a much generic access to all X-window events. The
 .I mlx.h
 include define
 .B mlx_hook()

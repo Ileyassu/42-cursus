@@ -14,49 +14,49 @@ int	mlx_int_param_undef()
 {
 }
 
-int	mlx_int_param_KeyPress(t_xvar *xvar, XEvent *ev, t_win_list *win)
+int	mlx_int_param_KeyPress(t_xvar *xvar, XEvent *ev, t_window_list *window)
 {
-  win->hooks[KeyPress].hook(XkbKeycodeToKeysym(xvar->display,
+  window->hooks[KeyPress].hook(XkbKeycodeToKeysym(xvar->display,
 					       ev->xkey.keycode, 0, 0),
-			    win->hooks[KeyPress].param);
+			    window->hooks[KeyPress].param);
 }
 
-int	mlx_int_param_KeyRelease(t_xvar *xvar, XEvent *ev, t_win_list *win)
+int	mlx_int_param_KeyRelease(t_xvar *xvar, XEvent *ev, t_window_list *window)
 {
-  win->hooks[KeyRelease].hook(XkbKeycodeToKeysym(xvar->display,
+  window->hooks[KeyRelease].hook(XkbKeycodeToKeysym(xvar->display,
 						 ev->xkey.keycode, 0, 0),
-			      win->hooks[KeyRelease].param);
+			      window->hooks[KeyRelease].param);
 }
 
-int	mlx_int_param_ButtonPress(t_xvar *xvar, XEvent *ev, t_win_list *win)
+int	mlx_int_param_ButtonPress(t_xvar *xvar, XEvent *ev, t_window_list *window)
 {
-  win->hooks[ButtonPress].hook(ev->xbutton.button,ev->xbutton.x,ev->xbutton.y,
-			       win->hooks[ButtonPress].param);
+  window->hooks[ButtonPress].hook(ev->xbutton.button,ev->xbutton.x,ev->xbutton.y,
+			       window->hooks[ButtonPress].param);
 }
 
-int	mlx_int_param_ButtonRelease(t_xvar *xvar, XEvent *ev, t_win_list *win)
+int	mlx_int_param_ButtonRelease(t_xvar *xvar, XEvent *ev, t_window_list *window)
 {
-  win->hooks[ButtonRelease].hook(ev->xbutton.button,
+  window->hooks[ButtonRelease].hook(ev->xbutton.button,
 				 ev->xbutton.x, ev->xbutton.y,
-				 win->hooks[ButtonRelease].param);
+				 window->hooks[ButtonRelease].param);
 }
 
-int	mlx_int_param_MotionNotify(t_xvar *xvar, XEvent *ev, t_win_list *win)
+int	mlx_int_param_MotionNotify(t_xvar *xvar, XEvent *ev, t_window_list *window)
 {
-  win->hooks[MotionNotify].hook(ev->xbutton.x,ev->xbutton.y,
-				win->hooks[MotionNotify].param);
+  window->hooks[MotionNotify].hook(ev->xbutton.x,ev->xbutton.y,
+				window->hooks[MotionNotify].param);
 }
 
-int	mlx_int_param_Expose(t_xvar *xvar, XEvent *ev, t_win_list *win)
+int	mlx_int_param_Expose(t_xvar *xvar, XEvent *ev, t_window_list *window)
 {
   if (!ev->xexpose.count)
-    win->hooks[Expose].hook(win->hooks[Expose].param);
+    window->hooks[Expose].hook(window->hooks[Expose].param);
 }
 
 
-int	mlx_int_param_generic(t_xvar *xvar, XEvent *ev, t_win_list *win)
+int	mlx_int_param_generic(t_xvar *xvar, XEvent *ev, t_window_list *window)
 {
-  win->hooks[ev->type].hook(win->hooks[ev->type].param);
+  window->hooks[ev->type].hook(window->hooks[ev->type].param);
 }
 
 int	(*(mlx_int_param_event[]))() =

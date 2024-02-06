@@ -1,6 +1,6 @@
 .TH MiniLibX 3 "September 19, 2002"
 .SH NAME
-MiniLibX - Drawing inside windows
+MiniLibX - Drawindowg inside windows
 .SH SYNOPSYS
 
 .nf
@@ -8,7 +8,7 @@ MiniLibX - Drawing inside windows
 .fi
 .B mlx_pixel_put
 (
-.I void *mlx_ptr, void *win_ptr, int x, int y, int color
+.I void *mlx_ptr, void *window_ptr, int x, int y, int color
 );
 
 .nf
@@ -16,7 +16,7 @@ MiniLibX - Drawing inside windows
 .fi
 .B mlx_string_put
 (
-.I void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string
+.I void *mlx_ptr, void *window_ptr, int x, int y, int color, char *string
 );
 
 
@@ -24,7 +24,7 @@ MiniLibX - Drawing inside windows
 The
 .B mlx_pixel_put
 () function draws a defined pixel in the window
-.I win_ptr
+.I window_ptr
 using the (
 .I x
 ,
@@ -56,7 +56,7 @@ specified window, nor display in another window in front of the selected one.
 The
 .I color
 parameter has an integer type. The displayed color needs to be encoded
-in this integer, following a defined scheme. All displayable colors
+in this integer, followindowg a defined scheme. All displayable colors
 can be split in 3 basic colors: red, green and blue. Three associated
 values, in the 0-255 range, represent how much of each color is mixed up
 to create the original color. Theses three values must be set inside the

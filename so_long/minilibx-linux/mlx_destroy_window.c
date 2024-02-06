@@ -12,27 +12,27 @@
 #include	"mlx_int.h"
 
 
-int	mlx_destroy_window(t_xvar *xvar,t_win_list *win)
+int	mlx_destroy_window(t_xvar *xvar,t_window_list *window)
 {
-  t_win_list	*w;
-  t_win_list	*prev;
-  t_win_list	first;
+  t_window_list	*w;
+  t_window_list	*prev;
+  t_window_list	first;
 
-  first.next = xvar->win_list;
+  first.next = xvar->window_list;
   prev = &first;
   w = prev->next;
   while (w)
     {
-      if (w==win)
+      if (w==window)
 	prev->next = w->next;
       else
 	prev = w;
       w = w->next;
     }
-  xvar->win_list = first.next;
-  XDestroyWindow(xvar->display,win->window);
-  XFreeGC(xvar->display,win->gc);
-  free(win);
+  xvar->window_list = first.next;
+  XDestroywindow(xvar->display,window->window);
+  XFreeGC(xvar->display,window->gc);
+  free(window);
   if (xvar->do_flush)
     XFlush(xvar->display);
 }

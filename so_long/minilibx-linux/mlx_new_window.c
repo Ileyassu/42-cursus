@@ -21,8 +21,8 @@
 
 void	*mlx_new_window(t_xvar *xvar,int size_x,int size_y,char *title)
 {
-	t_win_list				*new_win;
-	XSetWindowAttributes	xswa;
+	t_window_list				*new_window;
+	XSetwindowAttributes	xswa;
 	XGCValues				xgcv;
 
 	xswa.background_pixel = 0;
@@ -34,29 +34,29 @@ void	*mlx_new_window(t_xvar *xvar,int size_x,int size_y,char *title)
 	*/
 	/* xswa.event_mask = ExposureMask; */
 	xswa.event_mask = 0xFFFFFF;	/* all events */
-	if (!(new_win = malloc(sizeof(*new_win))))
+	if (!(new_window = malloc(sizeof(*new_window))))
 		return ((void *)0);
-	new_win->window = XCreateWindow(xvar->display,xvar->root,0,0,size_x,size_y,
+	new_window->window = XCreatewindow(xvar->display,xvar->root,0,0,size_x,size_y,
 					0,CopyFromParent,InputOutput,xvar->visual,
 					CWEventMask|CWBackPixel|CWBorderPixel|
 					CWColormap,&xswa);
-	mlx_int_anti_resize_win(xvar,new_win->window,size_x,size_y);
-	XStoreName(xvar->display,new_win->window,title);
-	XSetWMProtocols(xvar->display, new_win->window, &(xvar->wm_delete_window), 1);
+	mlx_int_anti_resize_window(xvar,new_window->window,size_x,size_y);
+	XStoreName(xvar->display,new_window->window,title);
+	XSetWMProtocols(xvar->display, new_window->window, &(xvar->wm_delete_window), 1);
 	xgcv.foreground = -1;
 	xgcv.function = GXcopy;
 	xgcv.plane_mask = AllPlanes;
-	new_win->gc = XCreateGC(xvar->display,new_win->window,
+	new_window->gc = XCreateGC(xvar->display,new_window->window,
 				GCFunction|GCPlaneMask|GCForeground,&xgcv);
-	new_win->next = xvar->win_list;
-	xvar->win_list = new_win;
+	new_window->next = xvar->window_list;
+	xvar->window_list = new_window;
 	/*
-	new_win->mouse_hook = mlx_int_do_nothing;
-	new_win->key_hook = mlx_int_do_nothing;
-	new_win->expose_hook = mlx_int_do_nothing;
+	new_window->mouse_hook = mlx_int_do_nothing;
+	new_window->key_hook = mlx_int_do_nothing;
+	new_window->expose_hook = mlx_int_do_nothing;
 	*/
-	bzero(&(new_win->hooks), sizeof(new_win->hooks));
-	XMapRaised(xvar->display,new_win->window);
-	mlx_int_wait_first_expose(xvar,new_win->window);
-	return (new_win);
+	bzero(&(new_window->hooks), sizeof(new_window->hooks));
+	XMapRaised(xvar->display,new_window->window);
+	mlx_int_wait_first_expose(xvar,new_window->window);
+	return (new_window);
 }

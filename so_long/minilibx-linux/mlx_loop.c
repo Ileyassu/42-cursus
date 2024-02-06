@@ -13,16 +13,16 @@
 
 extern int	(*(mlx_int_param_event[]))();
 
-static int	win_count(t_xvar *xvar)
+static int	window_count(t_xvar *xvar)
 {
 	int			i;
-	t_win_list	*win;
+	t_window_list	*window;
 
 	i = 0;
-	win = xvar->win_list;
-	while (win)
+	window = xvar->window_list;
+	while (window)
 	{
-		win = win->next;
+		window = window->next;
 		++i;
 	}
 	return (i);
@@ -37,23 +37,23 @@ int			mlx_loop_end(t_xvar *xvar)
 int			mlx_loop(t_xvar *xvar)
 {
 	XEvent		ev;
-	t_win_list	*win;
+	t_window_list	*window;
 
-	mlx_int_set_win_event_mask(xvar);
+	mlx_int_set_window_event_mask(xvar);
 	xvar->do_flush = 0;
-	while (win_count(xvar) && !xvar->end_loop)
+	while (window_count(xvar) && !xvar->end_loop)
 	{
 		while (!xvar->end_loop && (!xvar->loop_hook || XPending(xvar->display)))
 		{
 			XNextEvent(xvar->display,&ev);
-			win = xvar->win_list;
-			while (win && (win->window!=ev.xany.window))
-				win = win->next;
+			window = xvar->window_list;
+			while (window && (window->window!=ev.xany.window))
+				window = window->next;
 
-			if (win && ev.type == ClientMessage && ev.xclient.message_type == xvar->wm_protocols && ev.xclient.data.l[0] == xvar->wm_delete_window && win->hooks[DestroyNotify].hook)
-				win->hooks[DestroyNotify].hook(win->hooks[DestroyNotify].param);
-			if (win && ev.type < MLX_MAX_EVENT && win->hooks[ev.type].hook)
-				mlx_int_param_event[ev.type](xvar, &ev, win);
+			if (window && ev.type == ClientMessage && ev.xclient.message_type == xvar->wm_protocols && ev.xclient.mlx.l[0] == xvar->wm_delete_window && window->hooks[DestroyNotify].hook)
+				window->hooks[DestroyNotify].hook(window->hooks[DestroyNotify].param);
+			if (window && ev.type < MLX_MAX_EVENT && window->hooks[ev.type].hook)
+				mlx_int_param_event[ev.type](xvar, &ev, window);
 		}
 		XSync(xvar->display, False);
 		if (xvar->loop_hook)

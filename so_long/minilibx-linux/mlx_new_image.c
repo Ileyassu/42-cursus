@@ -30,7 +30,7 @@ int	shm_att_pb(Display *d,XErrorEvent *ev)
 
 
 /*
-**  Data malloc :  width+32 ( bitmap_pad=32 ),    *4 = *32 / 8bit
+**  mlx malloc :  width+32 ( bitmap_pad=32 ),    *4 = *32 / 8bit
 */
 
 
@@ -42,9 +42,9 @@ void	*mlx_int_new_xshm_image(t_xvar *xvar,int width,int height,int format)
   if (!(img = malloc(sizeof(*img))))
     return ((void *)0);
   bzero(img,sizeof(*img));
-  img->data = 0;
+  img->mlx = 0;
   img->image = XShmCreateImage(xvar->display,xvar->visual,xvar->depth,
-			       format,img->data,&(img->shm),width,height);
+			       format,img->mlx,&(img->shm),width,height);
   if (!img->image)
     {
       free(img);
@@ -62,8 +62,8 @@ void	*mlx_int_new_xshm_image(t_xvar *xvar,int width,int height,int format)
       free(img);
       return ((void *)0);
     }
-  img->data = img->shm.shmaddr = img->image->data = shmat(img->shm.shmid,0,0);
-  if (img->data==(void *)-1)
+  img->mlx = img->shm.shmaddr = img->image->mlx = shmat(img->shm.shmid,0,0);
+  if (img->mlx==(void *)-1)
     {
       shmctl(img->shm.shmid,IPC_RMID,0);
       XDestroyImage(img->image);
@@ -77,7 +77,7 @@ void	*mlx_int_new_xshm_image(t_xvar *xvar,int width,int height,int format)
       0&XSync(xvar->display,False) || mlx_X_error)
     {
       XSetErrorHandler(save_handler);
-      shmdt(img->data);
+      shmdt(img->mlx);
       shmctl(img->shm.shmid,IPC_RMID,0);
       XDestroyImage(img->image);
       free(img);
@@ -110,17 +110,17 @@ void	*mlx_int_new_image(t_xvar *xvar,int width, int height,int format)
 
   if (!(img = malloc(sizeof(*img))))
     return ((void *)0);
-  if (!(img->data = malloc((width+32)*height*4)))
+  if (!(img->mlx = malloc((width+32)*height*4)))
   {
     free(img);
     return ((void *)0);
   }
-  bzero(img->data,(width+32)*height*4);
+  bzero(img->mlx,(width+32)*height*4);
   img->image = XCreateImage(xvar->display,xvar->visual,xvar->depth,format,0,
-			    img->data,width,height,32,0);
+			    img->mlx,width,height,32,0);
   if (!img->image)
     {
-      free(img->data);
+      free(img->mlx);
       free(img);
       return ((void *)0);
     }

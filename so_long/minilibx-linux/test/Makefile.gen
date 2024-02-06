@@ -13,7 +13,7 @@ OBJ = $(SRC:%.c=%.o)
 
 LFLAGS = -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm
 
-ifeq ($(UNAME), Darwin)
+ifeq ($(UNAME), Darwindow)
 	# mac
 	CC = clang
 else ifeq ($(UNAME), FreeBSD)

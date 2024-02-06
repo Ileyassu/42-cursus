@@ -1,58 +1,49 @@
 #include "../includes/so_long.h"
 
-void player_in_map(t_mlx *mlx)
+static void	ft_player_move(t_mlx *mlx, char position, int direction)
+/* will put the correct orientation of the player on the screen */
 {
-    int x = 0;
-    int y = 0;
-
-    mlx->img->player_up = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/down.xpm", IMG_W, IMG_H);
-    while(mlx->map->tiles[y])
-    {
-        while(mlx->map->tiles[y][x])
-        {
-            if(mlx->map->tiles[y][x] == 'P')
-            {
-                break;
-            }
-            x++;
-        }
-        y++;
-    }
-    mlx->p_x = y;
-    mlx->p_x = x;
+	if (position == 'y' && direction == UP)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->player_up,
+			(mlx->p_x * IMG_W), (mlx->p_y * IMG_H));
+	}
+	if (position == 'x' && direction == LEFT)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->player_left,
+			(mlx->p_x * IMG_W), (mlx->p_y * IMG_H));
+	}
+	if (position == 'y' && direction == DOWN)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->player_down,
+			(mlx->p_x * IMG_W), (mlx->p_y * IMG_H));
+	}
+	if (position == 'x' && direction == RIGHT)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->player_right,
+			(mlx->p_x * IMG_W), (mlx->p_y * IMG_H));
+	}
 }
 
-void move_player (t_mlx *mlx, int direction)
+void	move_player(t_mlx *mlx, char pos, int dir)
+/* will check if a move is valid and move the player if valid */
 {
-    int new_x = mlx->p_x;
-    int new_y = mlx->p_y;
-    void player_in_map(t_mlx *mlx);
-    if (direction == 1) // Move up
-    {
-        new_y--;
-    }
-    else if (direction == 2) // Move down
-    {
-        new_y++;
-    }
-    else if (direction == 3) // Move left
-    {
-        new_x--;
-    }
-    else if (direction == 4) // Move right
-    {
-        new_x++;
-    }
-
-    // Check if the new position is within the map, not a wall, and not a border
-    if (new_x >= 0 && new_x < mlx->map->width && new_y >= 0 && 
-        new_y < mlx->map->height && mlx->map->tiles[new_y][new_x] != 'W'
-        && mlx->map->tiles[new_y][new_x] != '1')
-    {
-        // Move player to the new position
-        mlx->map->tiles[mlx->p_y][mlx->p_x] = '0'; // Empty the old position
-        mlx->map->tiles[new_y][new_x] = 'P'; // Place the player at the new position
-        mlx->p_x = new_x;
-        mlx->p_y = new_y;
-    }
+	printf("wsslte hhna, p_x = %dp_y )= %d\n", mlx->p_x, mlx->p_y);
+	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->background,
+		mlx->p_x, mlx->p_y);
+	if (pos == 'y' && mlx->map->tiles[mlx->p_y][mlx->p_x] != '1'
+		&& (mlx->map->tiles[mlx->p_y + 1][mlx->p_x] != 'E'))
+		mlx->p_y = mlx->p_y + 1;
+	else if (pos == 'x' && mlx->map->tiles[mlx->p_y][mlx->p_x + 1 * dir] != '1'
+		&& (mlx->map->tiles[mlx->p_y][mlx->p_x + 1] != 'E'))
+		mlx->p_x = mlx->p_x + 1;
+	else if (pos == 'y' && mlx->map->tiles[mlx->p_y + 1][mlx->p_x] == 'E')
+		printf("Collect all diamonds before leaving\n");
+	else if (pos == 'x' && mlx->map->tiles[mlx->p_y][mlx->p_x + 1] == 'E')
+		printf("Collect all diamonds before leaving\n");
+	ft_player_move(mlx, pos, dir);
+	// if (mlx->map->tiles[mlx->p_y][mlx->p_x] == 'C')
+	// 	ft_collect(mlx, pos, dir);
+	mlx_do_sync(mlx->mlx);
+	//printf("You moved %d times.\n", ++mlx->counter);
 }

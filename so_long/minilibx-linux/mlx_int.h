@@ -67,11 +67,11 @@ typedef struct	s_event_list
 }				t_event_list;
 
 
-typedef struct	s_win_list
+typedef struct	s_window_list
 {
-	Window				window;
+	window				window;
 	GC					gc;
-	struct s_win_list	*next;
+	struct s_window_list	*next;
 	int					(*mouse_hook)();
 	int					(*key_hook)();
 	int					(*expose_hook)();
@@ -79,7 +79,7 @@ typedef struct	s_win_list
 	void				*key_param;
 	void				*expose_param;
 	t_event_list		hooks[MLX_MAX_EVENT];
-}				t_win_list;
+}				t_window_list;
 
 
 typedef struct	s_img
@@ -93,20 +93,20 @@ typedef struct	s_img
 	int				height;
 	int				type;
 	int				format;
-	char			*data;
+	char			*mlx;
 	XShmSegmentInfo	shm;
 }				t_img;
 
 typedef struct	s_xvar
 {
 	Display		*display;
-	Window		root;
+	window		root;
 	int			screen;
 	int			depth;
 	Visual		*visual;
 	Colormap	cmap;
 	int			private_cmap;
-	t_win_list	*win_list;
+	t_window_list	*window_list;
 	int			(*loop_hook)();
 	void		*loop_param;
 	int			use_xshm;
@@ -123,7 +123,7 @@ int				mlx_int_do_nothing();
 int				mlx_get_color_value();
 int				mlx_int_get_good_color();
 int				mlx_int_find_in_pcm();
-int				mlx_int_anti_resize_win();
+int				mlx_int_anti_resize_window();
 int				mlx_int_wait_first_expose();
 int				mlx_int_rgb_conversion();
 int				mlx_int_deal_shm();
@@ -132,7 +132,7 @@ char			**mlx_int_str_to_wordtab();
 void			*mlx_new_image();
 int				shm_att_pb();
 int				mlx_int_get_visual(t_xvar *xvar);
-int				mlx_int_set_win_event_mask(t_xvar *xvar);
+int				mlx_int_set_window_event_mask(t_xvar *xvar);
 int				mlx_int_str_str_cote(char *str,char *find,int len);
 int				mlx_int_str_str(char *str,char *find,int len);
 

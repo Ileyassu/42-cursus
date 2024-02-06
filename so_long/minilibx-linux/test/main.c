@@ -2,17 +2,17 @@
 #include	"mlx.h"
 #include	"mlx_int.h"
 
-#define	WIN1_SX		242
-#define	WIN1_SY		242
+#define	window1_SX		242
+#define	window1_SY		242
 #define	IM1_SX		42
 #define	IM1_SY		42
 #define	IM3_SX		242
 #define	IM3_SY		242
 
 void	*mlx;
-void	*win1;
-void    *win2;
-void    *win3;
+void	*window1;
+void    *window2;
+void    *window3;
 void    *im1;
 void	*im2;
 void	*im3;
@@ -29,63 +29,63 @@ int	endian1;
 int	endian2;
 int	endian3;
 int	endian4;
-char	*data1;
-char	*data2;
-char	*data3;
-char	*data4;
+char	*mlx1;
+char	*mlx2;
+char	*mlx3;
+char	*mlx4;
 int	xpm1_x;
 int	xpm1_y;
 
 int	local_endian;
 
-int	color_map_1(void *win,int w,int h);
-int	color_map_2(unsigned char *data,int bpp,int sl,int w,int h,int endian, int type);
+int	color_map_1(void *window,int w,int h);
+int	color_map_2(unsigned char *mlx,int bpp,int sl,int w,int h,int endian, int type);
 
-int	expose_win1(void *p)
+int	expose_window1(void *p)
 {
-  mlx_put_image_to_window(mlx,win1,im3,0,0);
+  mlx_put_image_to_window(mlx,window1,im3,0,0);
 }
 
-int	expose_win2(void *p)
+int	expose_window2(void *p)
 {
-  mlx_put_image_to_window(mlx,win2,im4,0,0);
-  mlx_put_image_to_window(mlx,win2,im2,0,0);
+  mlx_put_image_to_window(mlx,window2,im4,0,0);
+  mlx_put_image_to_window(mlx,window2,im2,0,0);
 }
 
-int	key_win1(int key,void *p)
+int	key_window1(int key,void *p)
 {
-  printf("Key in Win1 : %d\n",key);
+  printf("Key in window1 : %d\n",key);
   if (key==0xFF1B)
     exit(0);
 }
 
-int	key_win2(int key,void *p)
+int	key_window2(int key,void *p)
 {
-  printf("Key in Win2 : %d\n",key);
+  printf("Key in window2 : %d\n",key);
   if (key==0xFF1B)
     exit(0);
 }
 
-int	key_win3(int key,void *p)
+int	key_window3(int key,void *p)
 {
-  printf("Key in Win3 : %d\n",key);
+  printf("Key in window3 : %d\n",key);
   if (key==0xFF1B)
-    mlx_destroy_window(mlx,win3);
+    mlx_destroy_window(mlx,window3);
 }
 
-int	mouse_win1(int button,int x,int y, void *p)
+int	mouse_window1(int button,int x,int y, void *p)
 {
-  printf("Mouse in Win1, button %d at %dx%d.\n",button,x,y);
+  printf("Mouse in window1, button %d at %dx%d.\n",button,x,y);
 }
 
-int	mouse_win2(int button,int x,int y, void *p)
+int	mouse_window2(int button,int x,int y, void *p)
 {
-  printf("Mouse in Win2, button %d at %dx%d.\n",button,x,y);
+  printf("Mouse in window2, button %d at %dx%d.\n",button,x,y);
 }
 
-int	mouse_win3(int x,int y, void *p)
+int	mouse_window3(int x,int y, void *p)
 {
-  printf("Mouse moving in Win3, at %dx%d.\n",x,y);
+  printf("Mouse moving in window3, at %dx%d.\n",x,y);
 }
 
 
@@ -109,8 +109,8 @@ int	main()
     }
   printf("OK (use_xshm %d pshm_format %d)\n",((t_xvar *)mlx)->use_xshm,((t_xvar *)mlx)->pshm_format);
 
-  printf(" => Window1 %dx%d \"Title 1\" ...",WIN1_SX,WIN1_SY);
-  if (!(win1 = mlx_new_window(mlx,WIN1_SX,WIN1_SY,"Title1")))
+  printf(" => window1 %dx%d \"Title 1\" ...",window1_SX,window1_SY);
+  if (!(window1 = mlx_new_window(mlx,window1_SX,window1_SY,"Title1")))
     {
       printf(" !! KO !!\n");
       exit(1);
@@ -118,12 +118,12 @@ int	main()
   printf("OK\n");
 
   printf(" => Colormap sans event ...");
-  color_map_1(win1,WIN1_SX,WIN1_SY);
+  color_map_1(window1,window1_SX,window1_SY);
   printf("OK\n");
   sleep(2);
 
-  printf(" => Clear Window ...");
-  mlx_clear_window(mlx,win1);
+  printf(" => Clear window ...");
+  mlx_clear_window(mlx,window1);
   printf("OK\n");
   sleep(2);
 
@@ -133,16 +133,16 @@ int	main()
       printf(" !! KO !!\n");
       exit(1);
     }
-  data1 = mlx_get_data_addr(im1,&bpp1,&sl1,&endian1);
+  mlx1 = mlx_get_mlx_addr(im1,&bpp1,&sl1,&endian1);
   printf("OK (bpp1: %d, sizeline1: %d endian: %d type: %d)\n",bpp1,sl1,endian1,
 	 ((t_img *)im1)->type);
 
   printf(" => Fill Image1 ...");
-  color_map_2(data1,bpp1,sl1,IM1_SX,IM1_SY,endian1, 1);
+  color_map_2(mlx1,bpp1,sl1,IM1_SX,IM1_SY,endian1, 1);
   printf("OK (pixmap : %d)\n",(int)((t_img *)im1)->pix);
 
   printf(" => Put Image1 ...");
-  mlx_put_image_to_window(mlx,win1,im1,20,20);
+  mlx_put_image_to_window(mlx,window1,im1,20,20);
   printf("OK\n");
   sleep(2);
 
@@ -157,22 +157,22 @@ int	main()
       printf(" !! KO !!\n");
       exit(1);
     }
-  data3 = mlx_get_data_addr(im3,&bpp3,&sl3,&endian3);
+  mlx3 = mlx_get_mlx_addr(im3,&bpp3,&sl3,&endian3);
   printf("OK (bpp3 %d, sizeline3 %d endian3 %d type %d)\n",bpp3,sl3,endian3,
 	 ((t_img *)im3)->type);
 
   printf(" => Fill Image3 ...");
-  color_map_2(data3,bpp3,sl3,IM3_SX,IM3_SY,endian3, 1);
+  color_map_2(mlx3,bpp3,sl3,IM3_SX,IM3_SY,endian3, 1);
   printf("OK (pixmap : %d)\n",(int)((t_img *)im3)->pix);
 
   printf(" => Put Image3 ...");
-  mlx_put_image_to_window(mlx,win1,im3,20,20);
+  mlx_put_image_to_window(mlx,window1,im3,20,20);
   printf("OK\n");
   sleep(2);
 
   printf(" => String ...");
-  mlx_string_put(mlx,win1,5,WIN1_SY/2,0xFF99FF,"String output");
-  mlx_string_put(mlx,win1,15,WIN1_SY/2+20,0x00FFFF,"MinilibX test");
+  mlx_string_put(mlx,window1,5,window1_SY/2,0xFF99FF,"String output");
+  mlx_string_put(mlx,window1,15,window1_SY/2+20,0x00FFFF,"MinilibX test");
   printf("OK\n");
   sleep(2);
 
@@ -182,38 +182,38 @@ int	main()
       printf(" !! KO !!\n");
       exit(1);
     }
-  data2 = mlx_get_data_addr(im2,&bpp2,&sl2,&endian2);
+  mlx2 = mlx_get_mlx_addr(im2,&bpp2,&sl2,&endian2);
   printf("OK (xpm %dx%d)(img bpp2: %d, sizeline2: %d endian: %d type: %d)\n",
 	 xpm1_x,xpm1_y,bpp2,sl2,endian2,((t_img *)im2)->type);
   sleep(2);
 
   printf(" => Put xpm ...");
-  mlx_put_image_to_window(mlx,win1,im2,0,0);
-  mlx_put_image_to_window(mlx,win1,im2,100,100);
+  mlx_put_image_to_window(mlx,window1,im2,0,0);
+  mlx_put_image_to_window(mlx,window1,im2,100,100);
   printf("OK\n");
   sleep(2);
 
   printf(" => 2nd window,");
-  win2 = mlx_new_window(mlx,WIN1_SX,WIN1_SY,"Title2");
+  window2 = mlx_new_window(mlx,window1_SX,window1_SY,"Title2");
   if (!(im4 = mlx_new_image(mlx,IM3_SX, IM3_SY)))
     {
       printf(" !! KO !!\n");
       exit(1);
     }
-  data4 = mlx_get_data_addr(im4,&bpp4,&sl4,&endian4);
-  color_map_2(data4,bpp4,sl4,IM3_SX,IM3_SY,endian4, 2);
+  mlx4 = mlx_get_mlx_addr(im4,&bpp4,&sl4,&endian4);
+  color_map_2(mlx4,bpp4,sl4,IM3_SX,IM3_SY,endian4, 2);
 
   printf(" 3rd window, Installing hooks ...");
-  win3 = mlx_new_window(mlx,WIN1_SX,WIN1_SY,"Title3");
-  mlx_expose_hook(win1,expose_win1,0);
-  mlx_mouse_hook(win1,mouse_win1,0);
-  mlx_key_hook(win1,key_win1,0);
-  mlx_expose_hook(win2,expose_win2,0);
-  mlx_mouse_hook(win2,mouse_win2,0);
-  mlx_key_hook(win2,key_win2,0);
-  mlx_key_hook(win3,key_win3,0);
+  window3 = mlx_new_window(mlx,window1_SX,window1_SY,"Title3");
+  mlx_expose_hook(window1,expose_window1,0);
+  mlx_mouse_hook(window1,mouse_window1,0);
+  mlx_key_hook(window1,key_window1,0);
+  mlx_expose_hook(window2,expose_window2,0);
+  mlx_mouse_hook(window2,mouse_window2,0);
+  mlx_key_hook(window2,key_window2,0);
+  mlx_key_hook(window3,key_window3,0);
 
-  mlx_hook(win3, MotionNotify, PointerMotionMask, mouse_win3, 0);
+  mlx_hook(window3, MotionNotify, PointerMotionMask, mouse_window3, 0);
 
   printf("OK\nNow in Loop. Just play. Esc in 3 to destroy, 1&2 to quit.\n");
   
@@ -221,7 +221,7 @@ int	main()
 }
 
 
-int	color_map_1(void *win,int w,int h)
+int	color_map_1(void *window,int w,int h)
 {
   int	x;
   int	y;
@@ -234,13 +234,13 @@ int	color_map_1(void *win,int w,int h)
       while (y--)
         {
           color = (x*255)/w+((((w-x)*255)/w)<<16)+(((y*255)/h)<<8);
-	  mlx_pixel_put(mlx,win,x,y,color);
+	  mlx_pixel_put(mlx,window,x,y,color);
         }
     }
 }
 
 
-int	color_map_2(unsigned char *data,int bpp,int sl,int w,int h,int endian, int type)
+int	color_map_2(unsigned char *mlx,int bpp,int sl,int w,int h,int endian, int type)
 {
   int	x;
   int	y;
@@ -255,7 +255,7 @@ int	color_map_2(unsigned char *data,int bpp,int sl,int w,int h,int endian, int t
   y = h;
   while (y--)
     {
-      ptr = data+y*sl;
+      ptr = mlx+y*sl;
       x = w;
       while (x--)
         {

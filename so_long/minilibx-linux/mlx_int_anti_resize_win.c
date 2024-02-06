@@ -1,5 +1,5 @@
 /*
-** mlx_int_anti_resize_win.c for MiniLibX in 
+** mlx_int_anti_resize_window.c for MiniLibX in 
 ** 
 ** Made by Charlie Root
 ** Login   <ol@epitech.net>
@@ -11,12 +11,12 @@
 #include	"mlx_int.h"
 
 
-int	mlx_int_anti_resize_win(t_xvar *xvar,Window win,int w,int h)
+int	mlx_int_anti_resize_window(t_xvar *xvar,window window,int w,int h)
 {
   XSizeHints    hints;
   long		toto;
   
-  XGetWMNormalHints(xvar->display,win,&hints,&toto);
+  XGetWMNormalHints(xvar->display,window,&hints,&toto);
   hints.width = w;
   hints.height = h;
   hints.min_width = w;
@@ -24,5 +24,5 @@ int	mlx_int_anti_resize_win(t_xvar *xvar,Window win,int w,int h)
   hints.max_width = w;
   hints.max_height = h;
   hints.flags = PPosition | PSize | PMinSize | PMaxSize;
-  XSetWMNormalHints(xvar->display,win,&hints);
+  XSetWMNormalHints(xvar->display,window,&hints);
 }

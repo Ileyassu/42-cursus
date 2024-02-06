@@ -67,14 +67,14 @@ test_default_main(){
 	wid3=$(xdotool search --name Title3)
 	
 	xdotool windowfocus $wid3
-	log_info "Focus Win3: Testing move mouse 100 100"
+	log_info "Focus window3: Testing move mouse 100 100"
 	xdotool mousemove 100 100
-	log_info "Focus Win3: Testing move mouse 200 200"
+	log_info "Focus window3: Testing move mouse 200 200"
 	xdotool mousemove 200 200
-	log_info "Focus Win3: Pressing escape to destroy window \"Win3\""
+	log_info "Focus window3: Pressing escape to destroy window \"window3\""
 	xdotool key Escape
 	
-	log_info "Focus Win2: Pressing escape to stop program"
+	log_info "Focus window2: Pressing escape to stop program"
 	xdotool windowfocus $wid2
 	xdotool key Escape
 }

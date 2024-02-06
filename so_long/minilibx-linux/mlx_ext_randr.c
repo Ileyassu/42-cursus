@@ -11,9 +11,9 @@
 RRMode	saved_mode = 0;
 
 
-int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list *win, int fullscreen)
+int			mlx_ext_fullscreen(t_xvar *xvar, t_window_list *window, int fullscreen)
 {
-  XWindowAttributes	watt;
+  XwindowAttributes	watt;
   int			i;
   int			j;
   XRRScreenResources	*res;
@@ -23,7 +23,7 @@ int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list *win, int fullscreen)
   int			idx_output;
   int			idx_candidate;
 
-  if (!XGetWindowAttributes(xvar->display, win->window, &watt))
+  if (!XGetwindowAttributes(xvar->display, window->window, &watt))
     return (0);
 
   res = XRRGetScreenResources(xvar->display, xvar->root);
@@ -81,13 +81,13 @@ int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list *win, int fullscreen)
   else
     printf("back previous mode\n");
   
-  XMoveWindow(xvar->display, win->window, 0, 0);
-  XMapRaised(xvar->display, win->window);
+  XMovewindow(xvar->display, window->window, 0, 0);
+  XMapRaised(xvar->display, window->window);
 
   if (fullscreen)
     {
-      //      XGrabPointer(xvar->display, win->window, True, 0, GrabModeAsync, GrabModeAsync, win->window, 0L, CurrentTime);
-      XGrabKeyboard(xvar->display, win->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
+      //      XGrabPointer(xvar->display, window->window, True, 0, GrabModeAsync, GrabModeAsync, window->window, 0L, CurrentTime);
+      XGrabKeyboard(xvar->display, window->window, False, GrabModeAsync, GrabModeAsync, CurrentTime);
     }
   else
     {

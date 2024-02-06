@@ -54,8 +54,8 @@ get_xlib_include_path(){
 		/usr/local/x11r5/include  \
 		/usr/lpp/Xamples/include  \
 								\
-		/usr/openwin/include      \
-		/usr/openwin/share/include
+		/usr/openwindow/include      \
+		/usr/openwindow/share/include
 	do
 		if [ -f "$inc/X11/Xlib.h" -a -f "$inc/X11/extensions/XShm.h" ]; then
 			result=$inc

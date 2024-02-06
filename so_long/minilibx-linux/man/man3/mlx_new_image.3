@@ -14,7 +14,7 @@ MiniLibX - Manipulating images
 .nf
 .I char *
 .fi
-.B mlx_get_data_addr
+.B mlx_get_mlx_addr
 (
 .I void *img_ptr, int *bits_per_pixel, int *size_line, int *endian
 );
@@ -24,7 +24,7 @@ MiniLibX - Manipulating images
 .fi
 .B mlx_put_image_to_window
 (
-.I void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y
+.I void *mlx_ptr, void *window_ptr, void *img_ptr, int x, int y
 );
 
 .nf
@@ -40,7 +40,7 @@ MiniLibX - Manipulating images
 .fi
 .B mlx_xpm_to_image
 (
-.I void *mlx_ptr, char **xpm_data, int *width, int *height
+.I void *mlx_ptr, char **xpm_mlx, int *width, int *height
 );
 
 .nf
@@ -84,7 +84,7 @@ display it on the screen. This is done using
 display, the window to use, and the image (respectively
 .I mlx_ptr
 ,
-.I win_ptr
+.I window_ptr
 and
 .I img_ptr
 ). The (
@@ -93,8 +93,8 @@ and
 .I y
 ) coordinates define where the image should be placed in the window.
 
-.B mlx_get_data_addr
-() returns information about the created image, allowing a user
+.B mlx_get_mlx_addr
+() returns information about the created image, allowindowg a user
 to modify it later. The
 .I img_ptr
 parameter specifies the image to use. The three next parameters should
@@ -113,7 +113,7 @@ little endian (
 .I endian
 == 1).
 
-.B mlx_get_data_addr
+.B mlx_get_mlx_addr
 returns a
 .I char *
 address that represents the begining of the memory area where the image
@@ -166,7 +166,7 @@ The
 .B mlx_xpm_file_to_image
 () functions will create a new image the same way.
 They will fill it using the specified
-.I xpm_data
+.I xpm_mlx
 or
 .I filename
 , depending on which function is used.

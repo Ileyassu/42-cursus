@@ -25,7 +25,7 @@ void	*mlx_init()
 		return ((void*)0);
 	}
 	xvar->screen = DefaultScreen(xvar->display);
-	xvar->root = DefaultRootWindow(xvar->display);
+	xvar->root = DefaultRootwindow(xvar->display);
 	xvar->cmap = DefaultColormap(xvar->display,xvar->screen);
 	xvar->depth = DefaultDepth(xvar->display,xvar->screen);
 	if (mlx_int_get_visual(xvar)==-1)
@@ -33,11 +33,11 @@ void	*mlx_init()
 		printf(ERR_NO_TRUECOLOR);
 		exit(1);
 	}
-	xvar->win_list = 0;
+	xvar->window_list = 0;
 	xvar->loop_hook = 0;
 	xvar->loop_param = (void *)0;
 	xvar->do_flush = 1;
-	xvar->wm_delete_window = XInternAtom (xvar->display, "WM_DELETE_WINDOW", False);
+	xvar->wm_delete_window = XInternAtom (xvar->display, "WM_DELETE_window", False);
 	xvar->wm_protocols = XInternAtom (xvar->display, "WM_PROTOCOLS", False);
 	mlx_int_deal_shm(xvar);
 	if (xvar->private_cmap)

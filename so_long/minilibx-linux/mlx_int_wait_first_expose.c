@@ -14,10 +14,10 @@
 
 
 
-int	mlx_int_wait_first_expose(t_xvar *xvar,Window win)
+int	mlx_int_wait_first_expose(t_xvar *xvar,window window)
 {
   XEvent	ev;
 
-  XWindowEvent(xvar->display,win,ExposureMask,&ev);
+  XwindowEvent(xvar->display,window,ExposureMask,&ev);
   XPutBackEvent(xvar->display,&ev);
 }

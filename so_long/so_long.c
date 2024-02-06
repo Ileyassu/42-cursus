@@ -1,5 +1,14 @@
 #include "./includes/so_long.h"
 
+static int	ft_action(t_mlx *mlx)
+/* checks for keyboard or mouse input */
+{
+    map_adder(mlx);
+	//mlx_hook(data->win, 17, 1L << 2, ft_exit, data);
+	mlx_key_hook(mlx->window, ft_key_hook, mlx);
+	return (0);
+}
+
 int main()
 {
     t_mlx mlx;
@@ -11,6 +20,6 @@ int main()
     printf("width = %s\n", mlx.map->tiles[0]);
     mlx.mlx = mlx_init();
     mlx.window = mlx_new_window(mlx.mlx, mlx.width * 30, mlx.height * 30, "Test");
-    map_adder(&mlx);
+    ft_action(&mlx);
     mlx_loop(mlx.mlx);
 }

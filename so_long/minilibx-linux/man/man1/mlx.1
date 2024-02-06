@@ -1,6 +1,6 @@
 .TH MiniLibX 3 "September 19, 2002"
 .SH NAME
-MiniLibX - Simple X-Window Interface Library for students
+MiniLibX - Simple X-window Interface Library for students
 .SH SYNOPSYS
 #include <mlx.h>
 
@@ -12,13 +12,13 @@ MiniLibX - Simple X-Window Interface Library for students
 
 .SH DESCRIPTION
 MiniLibX is an easy way to create graphical software,
-without any X-Window programming knowledge. It provides
-simple window creation, a drawing tool, image and basic events
+without any X-window programming knowledge. It provides
+simple window creation, a drawindowg tool, image and basic events
 management.
 
-.SH X-WINDOW CONCEPT
+.SH X-window CONCEPT
 
-X-Window is a network-oriented graphical system for Unix.
+X-window is a network-oriented graphical system for Unix.
 It is based on two main parts:
 .br
 On one side, your software wants to draw something on the screen and/or
@@ -28,7 +28,7 @@ On the other side, the X-Server manages the screen, keyboard and mouse
 (It is often refered to as a "display").
 .br
 A network connection must be established between these two entities to send
-drawing orders (from the software to the X-Server), and keyboard/mouse
+drawindowg orders (from the software to the X-Server), and keyboard/mouse
 events (from the X-Server to the software).
 
 .SH INCLUDE FILE
@@ -52,7 +52,7 @@ return a
 .I "void *"
 identifier, used for further calls to the library routines.
 .P
-All other MiniLibX functions are described in the following man pages:
+All other MiniLibX functions are described in the followindowg man pages:
 
 .TP 20
 .B mlx_new_window
@@ -70,7 +70,7 @@ All other MiniLibX functions are described in the following man pages:
 .SH LINKING MiniLibX
 To use MiniLibX functions, you'll need to link
 your software with several libraries, including the MiniLibX library itself.
-To do this, simply add the following arguments at linking time:
+To do this, simply add the followindowg arguments at linking time:
 
 .B -lmlx -lXext -lX11
 
