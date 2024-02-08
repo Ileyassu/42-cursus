@@ -5,7 +5,7 @@ void extract_ber(t_mlx *mlx, t_map *map, char *filename) //next give it argc and
     char *arr;
     char *tmp;
     char *path;
-    
+
     path = ft_strdup("./map/");
     path = ft_strjoin(path, filename);
     if(!path)

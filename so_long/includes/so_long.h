@@ -64,6 +64,7 @@ void extract_ber(t_mlx *mlx, t_map *map, char *av);
 int	ft_key_hook(int keycode, t_mlx *mlx);
 int ft_exit(t_mlx *mlx);
 void	move_player(t_mlx *mlx, char pos, int dir);
+char **map_duplicate(t_mlx *mlx);
 char	*ft_strstr(const char *big, const char *little);
 
 #endif

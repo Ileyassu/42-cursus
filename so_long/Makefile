@@ -7,6 +7,7 @@ SRC =	\
 	src/move.c \
 	src/ft_key_hook.c \
 	src/ft_strstr.c \
+	src/flood_fill.c \
 	getnextline/get_next_line.c \
 	getnextline/get_next_line_utils.c \
 	printf/ft_printf.c \
