@@ -51,6 +51,7 @@ typedef struct s_mlx
     int p_x;
     int p_y;
     void *p_img;
+    int drahm_in_map;
     int count_drhm;
     t_map *map;
     t_img *img;
@@ -59,9 +60,10 @@ typedef struct s_mlx
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	**ft_split(const char *s, char c);
 void map_adder(t_mlx *mlx);
-void extract_ber(t_mlx *mlx, t_map *map);
+void extract_ber(t_mlx *mlx, t_map *map, char *av);
 int	ft_key_hook(int keycode, t_mlx *mlx);
 int ft_exit(t_mlx *mlx);
 void	move_player(t_mlx *mlx, char pos, int dir);
+char	*ft_strstr(const char *big, const char *little);
 
 #endif

@@ -1,11 +1,15 @@
 #include "../includes/so_long.h"
 
+static int step_counter;
+
 static void	ft_player_move(t_mlx *mlx, char position, int direction)
 {
-    int old_x = mlx->p_x * IMG_W;
-    int old_y = mlx->p_y * IMG_H;
-
+    int old_x = 0;
+    int old_y = 0;
+    old_y = mlx->p_y * IMG_H;
+    old_x = mlx->p_x * IMG_W;
     mlx_do_sync(mlx->mlx);
+
     if (position == 'y' && direction == UP)
     {
         mlx->p_y -= 1;
@@ -35,12 +39,34 @@ static void	ft_player_move(t_mlx *mlx, char position, int direction)
         mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->player_down, mlx->p_x * IMG_W, mlx->p_y * IMG_H);
     if (position == 'x' && direction == RIGHT)
         mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->player_right, mlx->p_x * IMG_W, mlx->p_y * IMG_H);
+    if(mlx->map->tiles[old_y / 30][old_x / 30] == 'E')
+    {
+       int x = old_x / 30;
+       int y = old_y / 30;
+        mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->salah, x* 30 , y * 30 );
+    }
+}
+
+void check_if_drhm (t_mlx *mlx)
+{
+	if (mlx->map->tiles[mlx->p_y][mlx->p_x] == 'C')
+	{
+		mlx->count_drhm++;
+        ft_printf("Solde : %ddh\n", mlx->count_drhm);
+        ft_printf("You moved %d steps\n", step_counter++);
+        mlx->map->tiles[mlx->p_y][mlx->p_x] = '0';
+        if(mlx->count_drhm == mlx->drahm_in_map)
+		{
+			ft_printf("You collected enough drahm for a talyane 3nde salah\n");
+		}
+	}
 }
 
 void	move_player(t_mlx *mlx, char pos, int dir)
 /* will check if a move is valid and move the player if valid */
 {
-	if (pos == 'y' && dir == UP && mlx->p_y - 1 >= 0 && mlx->map->tiles[mlx->p_y - 1][mlx->p_x] != '1')
+	
+    if (pos == 'y' && dir == UP && mlx->p_y - 1 >= 0 && mlx->map->tiles[mlx->p_y - 1][mlx->p_x] != '1')
 	{
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
@@ -60,9 +86,6 @@ void	move_player(t_mlx *mlx, char pos, int dir)
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
 	}
-	//mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->background, mlx->p_x, mlx->p_y);
-	//ft_player_move(mlx, pos, dir);
-	// if (mlx->map->tiles[mlx->p_y][mlx->p_x] == 'C')
-	// 	ft_collect(mlx, pos, dir);
-	//printf("You moved %d times.\n", ++mlx->counter);
+    ft_printf("You moved %d steps\n", step_counter++);
+    check_if_drhm (mlx);
 }

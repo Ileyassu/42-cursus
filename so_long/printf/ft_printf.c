@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:12:38 by ilyas             #+#    #+#             */
-/*   Updated: 2024/02/06 21:26:38 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/07 14:34:56 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static int	behindthescene(va_list ap, char c)
 {
 	int	count;
-	ft_printf("asdsad");
 	count = 0;
 	if (c == 'c')
 		count = ft_putchar(va_arg(ap, int));

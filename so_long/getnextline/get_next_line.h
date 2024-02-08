@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:10:01 by ibenaiss          #+#    #+#             */
-/*   Updated: 2023/12/22 18:12:09 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:29:19 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 int		ft_strlen(char *str);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *stash, char *buffer);
+char	*ft_strdup(const char *str);
 char	*get_next_line(int fd);
 #endif

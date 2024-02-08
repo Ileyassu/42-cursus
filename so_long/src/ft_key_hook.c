@@ -16,6 +16,11 @@ int	ft_key_hook(int keycode, t_mlx *mlx)
 		move_player(mlx, 'x', RIGHT);
 	if (mlx->map->tiles[mlx->p_y][mlx->p_x] == 'E')
 	{
+		if(mlx->count_drhm != mlx->drahm_in_map)
+		{
+			ft_printf("Salah ignoring you, collect more drahm\n");
+			return (0);
+		}
 		ft_printf("Player : \"Ara chi talyane lahafdk\"\n");
 		usleep(1000000);
 		ft_printf("Salah : \"ch7al mne skara ?\"\n");

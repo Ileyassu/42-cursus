@@ -36,6 +36,8 @@ void map_adder(t_mlx *mlx)
     mlx->p_y = IMG_H;
     put_objects(mlx);
     int len = MaxMlx(mlx->map->tiles);
+    mlx->count_drhm = 0;
+    mlx->drahm_in_map = 0;
     while(mlx->map->tiles[y])
     {
         x = 0;
@@ -55,7 +57,10 @@ void map_adder(t_mlx *mlx)
                 mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->p_img, x* 30 , y * 30 );
             }
             else if(mlx->map->tiles[y][x] == 'C')
+            {
                 mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->drhm, x* 30 , y * 30 );
+                mlx->drahm_in_map++;
+            }
             else if(mlx->map->tiles[y][x] == 'E')
                 mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->salah, x* 30 , y * 30 );
             x++;
