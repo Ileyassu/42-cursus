@@ -36,5 +36,33 @@ void extract_ber(t_mlx *mlx, t_map *map, char *filename) //next give it argc and
     free(path);
     close(fd);
     mlx->map->tiles = ft_split(arr, '\n');
-    mlx->width = ft_strlen(map->tiles[0]); 
+    free(arr);
+    mlx->width = ft_strlen(map->tiles[0]);
 }
+
+// int map_checker(t_mlx *mlx)
+// {
+//     int checker;
+//     int x;
+//     int y = 0;
+//     int len = MaxMlx(mlx->map->tiles);
+//     char **duplicate;
+
+//     duplicate = map_duplicate(mlx);
+//     while(mlx->map->tiles[y])
+//     {
+//         x = 0;
+//         while(x < len)
+//         {
+//             if(duplicate[y][x] == 'E')
+//             {
+//                 mlx->exit_y = y;
+//                 mlx->exit_x = x;
+//             }
+//             x++;
+//         }
+//         y++;
+//     }
+//     checker = canPlayerReachExit(duplicate, mlx->p_x, mlx->p_y, mlx->exit_x, mlx->exit_y);
+//     //should add more code here
+// }

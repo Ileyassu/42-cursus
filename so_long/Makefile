@@ -1,3 +1,9 @@
+
+RED=\033[0;31m
+GREEN=\033[0;32m
+YELLOW=\033[0;33m
+NC=\033[0m
+
 SRC =	\
 	so_long.c \
 	src/ft_memcpy.c \
@@ -34,15 +40,24 @@ AR = ar rcs
 all : $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	@echo "$(GREEN) compiling $(NAME) ... $(NC)"
+	@$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	@sleep 1
+	@echo "$(RED) $(NAME) compiled successfully. $(NC)"
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -Imlx -c $< -o $@
+	@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -Imlx -c $< -o $@
 
 fclean : clean
-	$(RM) -f $(NAME)
+	@echo full cleaning of $(NAME) ...
+	@$(RM) -f $(NAME)
+	@sleep 0.5
+	@echo $(NAME) cleaned.
 
 clean :
-	$(RM) -f $(OBJ)
+	@echo cleaning $(NAME) ...
+	@$(RM) -f $(OBJ)
+	@sleep 0.5
+	@echo $(NAME) cleaned.
 
 re : fclean all

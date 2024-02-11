@@ -54,7 +54,7 @@ int main(int ac, char **av)
     extract_ber(&mlx, mlx.map, filename);
     free(filename);
     mlx.mlx = mlx_init();
-    mlx.window = mlx_new_window(mlx.mlx, mlx.width * 30, mlx.height * 30, "Test");
+    mlx.window = mlx_new_window(mlx.mlx, mlx.width * 30, mlx.height * 30, "Road to salah moul 9hhwa");
     ft_action(&mlx);
     mlx_loop(mlx.mlx);
 }

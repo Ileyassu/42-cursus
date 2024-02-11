@@ -13,7 +13,7 @@ static void put_objects(t_mlx *mlx)
     mlx->p_img = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/down.xpm", &mlx->map->width, &mlx->map->height);
 }
 
-static int MaxMlx(char **map)
+int MaxMlx(char **map)
 {
 
     int tmp = -1;
@@ -62,9 +62,31 @@ void map_adder(t_mlx *mlx)
                 mlx->drahm_in_map++;
             }
             else if(mlx->map->tiles[y][x] == 'E')
+            {
+                mlx->exit_x = x;
+                mlx->exit_y = y;
                 mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->salah, x* 30 , y * 30 );
+            }
             x++;
         }
         y++;
+    }
+    char **duplicate = map_duplicate(mlx);
+    int result;
+
+    result = canPlayerReachExit(duplicate, mlx->p_x, mlx->p_y, mlx->exit_x, mlx->exit_y);
+    int i = 0;
+    //printf("x = %d\ny = %d\n",mlx->p_x, mlx->p_y);
+    while(duplicate[i])
+    {
+        printf("%s\n", duplicate[i++]);
+    }
+    if (result) 
+    {
+        printf("Player can reach the exit!\n");
+    }   
+    else 
+    {
+        printf("Player cannot reach the exit.\n");
     }
 }

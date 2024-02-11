@@ -1,21 +1,21 @@
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include "../printf/ft_printf.h"
-#include "../minilibx-linux/mlx.h"
-#include "../getnextline/get_next_line.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include "../printf/ft_printf.h"
+# include "../minilibx-linux/mlx.h"
+# include "../getnextline/get_next_line.h"
 
-#define BUFFER_SIZE 3
-#define IMG_H 30
-#define IMG_W 30
-#define UP -1
-#define DOWN 1
-#define LEFT -1
-#define RIGHT 1
+# define BUFFER_SIZE 3
+# define IMG_H 30
+# define IMG_W 30
+# define UP -1
+# define DOWN 1
+# define LEFT -1
+# define RIGHT 1
 
 # define ESC 65307
 # define W 119
@@ -48,6 +48,8 @@ typedef struct s_mlx
     int height;
     int width;
     void *window;
+    int exit_y;
+    int exit_x;
     int p_x;
     int p_y;
     void *p_img;
@@ -64,7 +66,11 @@ void extract_ber(t_mlx *mlx, t_map *map, char *av);
 int	ft_key_hook(int keycode, t_mlx *mlx);
 int ft_exit(t_mlx *mlx);
 void	move_player(t_mlx *mlx, char pos, int dir);
+int MaxMlx(char **map);
 char **map_duplicate(t_mlx *mlx);
 char	*ft_strstr(const char *big, const char *little);
+void flood_fill(char **map, int x, int y, char old_char, char new_char);
+int canPlayerReachExit(char **duplicate, int playerX, int playerY, int exitX, int exitY);
+
 
 #endif
