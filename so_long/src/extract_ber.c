@@ -1,5 +1,76 @@
 #include "../includes/so_long.h"
 
+int validate_map(t_mlx *mlx) {
+    int width = mlx->map->width;
+    int height = mlx->map->height;
+    char **tiles = mlx->map->tiles;
+    int player_count = 0;
+    int exit_count = 0;
+    int coin_count = 0;
+    int i = 0, j;
+    printf("player_count = %d\n", player_count);
+    printf("player_count = %d\n", player_count);
+
+    // Check if all rows have the same length
+    while (i < height) {
+        if ((int)strlen(tiles[i]) != width)
+            return 0;
+        i++;
+    }
+
+    // Check if the map is surrounded by walls
+    i = 0;
+    while (i < width) {
+        if (tiles[0][i] != '1' || tiles[height-1][i] != '1')
+            return 0;
+        i++;
+    }
+
+    i = 0;
+    while (i < height) {
+        if (tiles[i][0] != '1' || tiles[i][width-1] != '1')
+            return 0;
+        i++;
+    }
+
+    // Count the number of 'P', 'E', and 'C'
+    i = 0;
+    while (i < height) {
+        j = 0;
+        while (j < width) {
+            if (tiles[i][j] == 'P') {
+                player_count++;
+                mlx->p_y = i;
+                mlx->p_x = j;
+                printf("player_count = %d\n", player_count);
+            } else if (tiles[i][j] == 'E') {
+                printf("player_count = %d\n", player_count);
+                exit_count++;
+                mlx->exit_y = i;
+                mlx->exit_x = j;
+            } else if (tiles[i][j] == 'C') {
+                coin_count++;
+            }
+            j++;
+        }
+        i++;
+    }
+
+    // Check if there is exactly one player and one exit
+    if (player_count != 1 || exit_count != 1){ //segfault in here
+        return 0;
+}
+    // Check if the player can reach all coins and the exit
+    int **visited = create_2D_array(height, width);
+    mlx->total_coins = coin_count;
+    mlx->coins_collected = 0;
+    mlx->exit_reachable = 0;
+    flood_fill(mlx, mlx->p_x, mlx->p_y, visited);
+    free_2D_array(visited, height);
+
+    return (mlx->coins_collected == mlx->total_coins && mlx->exit_reachable);
+}
+
 void extract_ber(t_mlx *mlx, t_map *map, char *filename) //next give it argc and argv
 {
     char *arr;
@@ -38,31 +109,8 @@ void extract_ber(t_mlx *mlx, t_map *map, char *filename) //next give it argc and
     mlx->map->tiles = ft_split(arr, '\n');
     free(arr);
     mlx->width = ft_strlen(map->tiles[0]);
+    if (!validate_map(mlx))
+    {
+        ft_exit(mlx);
+    }
 }
-
-// int map_checker(t_mlx *mlx)
-// {
-//     int checker;
-//     int x;
-//     int y = 0;
-//     int len = MaxMlx(mlx->map->tiles);
-//     char **duplicate;
-
-//     duplicate = map_duplicate(mlx);
-//     while(mlx->map->tiles[y])
-//     {
-//         x = 0;
-//         while(x < len)
-//         {
-//             if(duplicate[y][x] == 'E')
-//             {
-//                 mlx->exit_y = y;
-//                 mlx->exit_x = x;
-//             }
-//             x++;
-//         }
-//         y++;
-//     }
-//     checker = canPlayerReachExit(duplicate, mlx->p_x, mlx->p_y, mlx->exit_x, mlx->exit_y);
-//     //should add more code here
-// }

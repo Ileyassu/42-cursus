@@ -71,22 +71,4 @@ void map_adder(t_mlx *mlx)
         }
         y++;
     }
-    char **duplicate = map_duplicate(mlx);
-    int result;
-
-    result = canPlayerReachExit(duplicate, mlx->p_x, mlx->p_y, mlx->exit_x, mlx->exit_y);
-    int i = 0;
-    //printf("x = %d\ny = %d\n",mlx->p_x, mlx->p_y);
-    while(duplicate[i])
-    {
-        printf("%s\n", duplicate[i++]);
-    }
-    if (result) 
-    {
-        printf("Player can reach the exit!\n");
-    }   
-    else 
-    {
-        printf("Player cannot reach the exit.\n");
-    }
 }

@@ -1,38 +1,61 @@
 #include "../includes/so_long.h"
 
-char **map_duplicate(t_mlx *mlx)
-{
-    int i = 0;
-    char **duplicate;
+int **create_2D_array(int height, int width) {
+    int **array = malloc(height * sizeof(int *));
+    if (array == NULL) {
+        return NULL;
+    }
 
-    duplicate = NULL;
-    duplicate = malloc(sizeof(char *) * (mlx->height + 1));
-    while(mlx->map->tiles[i])
-    {
-        duplicate[i] = ft_strdup(mlx->map->tiles[i]);
+    int i = 0;
+    while (i < height) {
+        array[i] = malloc(width * sizeof(int));
+        if (array[i] == NULL) {
+            while (i >= 0) {
+                free(array[i]);
+                i--;
+            }
+            free(array);
+            return NULL;
+        }
+        ft_memset(array[i], 0, width * sizeof(int)); // Initialize all elements to 0
         i++;
     }
-    return duplicate;
+
+    return array;
 }
 
-void flood_fill(char **map, int x, int y, char old_char, char new_char)
-{
-    if (x < 0 || y < 0 || !map[x] || y >= ft_strlen(map[x]) || map[x][y] != old_char)
-    {
-        return;
+void free_2D_array(int **array, int height) {
+    int i = 0;
+    while (i < height) {
+        free(array[i]);
+        i++;
+    }
+    free(array);
+}
+
+// Flood fill function
+void flood_fill(t_mlx *mlx, int x, int y, int **visited) {
+    // Base cases
+    if (x < 0 || x >= mlx->map->width || y < 0 || y >= mlx->map->height) {
+        return; // Out of bounds
+    }
+    if (visited[y][x] || mlx->map->tiles[y][x] == '1') {
+        return; // Already visited or is a wall
     }
 
-    map[x][y] = new_char;
+    // Mark as visited
+    visited[y][x] = 1;
 
-    flood_fill(map, x + 1, y, old_char, new_char);
-    flood_fill(map, x - 1, y, old_char, new_char);
-    flood_fill(map, x, y + 1, old_char, new_char);
-    flood_fill(map, x, y - 1, old_char, new_char);
-}
+    // Process the tile
+    if (mlx->map->tiles[y][x] == 'C') {
+        mlx->coins_collected++;
+    } else if (mlx->map->tiles[y][x] == 'E') {
+        mlx->exit_reachable = 1;
+    }
 
-// Function to check if the player can reach the exit
-int canPlayerReachExit(char **duplicate, int playerX, int playerY, int exitX, int exitY)
-{
-    flood_fill(duplicate, playerX, playerY, '0', 'E');  // Assuming '5' is a new character for reachable cells
-    return duplicate[exitX][exitY] == 'E';  // Check if the exit is marked with '5'
+    // Recur for all directions
+    flood_fill(mlx, x-1, y, visited); // Left
+    flood_fill(mlx, x+1, y, visited); // Right
+    flood_fill(mlx, x, y-1, visited); // Up
+    flood_fill(mlx, x, y+1, visited); // Down
 }

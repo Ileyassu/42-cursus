@@ -7,6 +7,7 @@ NC=\033[0m
 SRC =	\
 	so_long.c \
 	src/ft_memcpy.c \
+	src/ft_memset.c \
 	src/ft_split.c \
 	src/extract_ber.c \
 	src/map_to_window.c \

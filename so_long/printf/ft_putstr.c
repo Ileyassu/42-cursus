@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 20:28:12 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/30 12:18:38 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:38:18 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	ft_putstr(char *s)
 {
 	int	i;
 	int	count;
-
+	int oui;
 	if (s == NULL)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		oui = write(1, "(null)", 6);
+		return (oui);
 	}
 	i = 0;
 	count = ft_strlen(s);

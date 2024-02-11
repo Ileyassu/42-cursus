@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 00:13:05 by ilyas             #+#    #+#             */
-/*   Updated: 2023/11/30 17:21:16 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:37:17 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_putnbr_base(unsigned long n, int base, int uppercase)
 		b = "0123456789ABCDEF";
 	else
 		b = "0123456789abcdef";
-	if (n < 0)
+	if ((int)n < 0)
 	{
 		ft_putchar('-');
 		count += ft_putnbr_base(-n, base, uppercase) + 1;
