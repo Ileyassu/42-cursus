@@ -33,24 +33,36 @@ void free_2D_array(int **array, int height) {
     free(array);
 }
 
-// Flood fill function
+//Flood fill function
 void flood_fill(t_mlx *mlx, int x, int y, int **visited) {
-    // Base cases
-    if (x < 0 || x >= mlx->map->width || y < 0 || y >= mlx->map->height) {
-        return; // Out of bounds
+    //Base cases
+    // if (x < 0 || x >= mlx->width || y < 0 || y >= mlx->height) {
+    //     return; // Out of bounds
+    // }
+    int i, j;
+    for (i = 0; i < mlx->height; i++) {
+    for (j = 0; j < mlx->width; j++) {
+        printf("%d", visited[i][j]);
     }
+    printf("\n");
+}
+printf("-----------------\n");
     if (visited[y][x] || mlx->map->tiles[y][x] == '1') {
         return; // Already visited or is a wall
     }
+    if (mlx->map->tiles[y][x] == 'E' || visited[y][x] == 3)
+    {
+        mlx->exit_reachable = 1;
+        return;
+    }
+    printf("x = %d\n", x);
+    printf("y = %d\n", y);
 
     // Mark as visited
     visited[y][x] = 1;
-
     // Process the tile
     if (mlx->map->tiles[y][x] == 'C') {
         mlx->coins_collected++;
-    } else if (mlx->map->tiles[y][x] == 'E') {
-        mlx->exit_reachable = 1;
     }
 
     // Recur for all directions

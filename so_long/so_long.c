@@ -39,8 +39,8 @@ int ft_exit(t_mlx *mlx)
     // Close the window and exit the program
     if (mlx->mlx && mlx->window) 
     {
-        mlx_destroy_window(mlx->mlx, mlx->window);
         printf("tset\n");
+        mlx_destroy_window(mlx->mlx, mlx->window);
     }
     //mlx_destroy_window(mlx->mlx, mlx->window);
     exit(0);

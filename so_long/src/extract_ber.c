@@ -29,8 +29,12 @@ int validate_map(t_mlx *mlx) {
 
     while(i < height)
     {
+        printf("hhna : %s\n", "tiles[i]");
         if (ft_strlen(tiles[i]) != width)
+        {
+            ft_printf("Invalid map\n");
             return (0);
+        }
         i++;
     }
 
@@ -58,9 +62,7 @@ int validate_map(t_mlx *mlx) {
                 player_count++;
                 mlx->p_y = i;
                 mlx->p_x = j;
-                printf("player_count = %d\n", player_count);
             } else if (tiles[i][j] == 'E') {
-                printf("player_count = %d\n", player_count);
                 exit_count++;
                 mlx->exit_y = i;
                 mlx->exit_x = j;
@@ -71,20 +73,33 @@ int validate_map(t_mlx *mlx) {
         }
         i++;
     }
-
     // Check if there is exactly one player and one exit
-    if (player_count != 1 || exit_count != 1){ //segfault in here
+    if (player_count != 1 || exit_count != 1)
+    {
         return 0;
-}
+    }
     // Check if the player can reach all coins and the exit
     int **visited = create_2D_array(height, width);
     mlx->total_coins = coin_count;
     mlx->coins_collected = 0;
     mlx->exit_reachable = 0;
-    flood_fill(mlx, mlx->p_x, mlx->p_y, visited);
+    flood_fill(mlx, mlx->p_x, mlx->p_y, visited); //somehow makydkhlch l floodfill
+    i = 0;
+    j = 0;
+    if (mlx->coins_collected < mlx->total_coins || !mlx->exit_reachable) {
+        free_2D_array(visited, mlx->height);
+        return 0; // Map is not valid
+    }
+    for (int i = 0; i < mlx->height; i++) {
+    for (int j = 0; j < mlx->width; j++) {
+        printf("%d", visited[i][j]);
+    }
+    printf("\n");
+}
     free_2D_array(visited, height);
-
-    return (mlx->coins_collected == mlx->total_coins && mlx->exit_reachable);
+    
+    //return (1);
+    return (mlx->coins_collected == mlx->total_coins) && (mlx->exit_reachable);
 }
 
 void extract_ber(t_mlx *mlx, t_map *map, char *filename) //next give it argc and argv
@@ -127,6 +142,7 @@ void extract_ber(t_mlx *mlx, t_map *map, char *filename) //next give it argc and
     mlx->width = ft_strlen(map->tiles[0]);
     if (!validate_map(mlx))
     {
+        ft_printf("ft_exit\n");
         ft_exit(mlx);
     }
 }
