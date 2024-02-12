@@ -37,7 +37,12 @@ int ft_exit(t_mlx *mlx)
     }
 
     // Close the window and exit the program
-    mlx_destroy_window(mlx->mlx, mlx->window);
+    if (mlx->mlx && mlx->window) 
+    {
+        mlx_destroy_window(mlx->mlx, mlx->window);
+        printf("tset\n");
+    }
+    //mlx_destroy_window(mlx->mlx, mlx->window);
     exit(0);
 }
 
@@ -52,6 +57,8 @@ int main(int ac, char **av)
     mlx.map->tiles = NULL;
     filename = ft_strdup(av[1]);
     extract_ber(&mlx, mlx.map, filename);
+    printf("tset\n");
+
     free(filename);
     mlx.mlx = mlx_init();
     mlx.window = mlx_new_window(mlx.mlx, mlx.width * 30, mlx.height * 30, "Road to salah moul 9hhwa");

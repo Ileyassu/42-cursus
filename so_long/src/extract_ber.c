@@ -1,20 +1,36 @@
 #include "../includes/so_long.h"
 
+char **duplicate(t_mlx *mlx)
+{
+    char **duplicate;
+
+    duplicate = malloc(sizeof(char *) * (mlx->height + 1));
+    int i = 0;
+    while (mlx->map->tiles[i] != NULL)
+    {
+        duplicate[i] = ft_strdup(mlx->map->tiles[i]);
+        i++;
+    }
+    duplicate[i] = NULL;
+    return (duplicate);
+}
+
 int validate_map(t_mlx *mlx) {
-    int width = mlx->map->width;
-    int height = mlx->map->height;
-    char **tiles = mlx->map->tiles;
+    int width = mlx->width;
+    int height = mlx->height;
+    char **tiles;
+    
+    //fix segfault on tiles
+    tiles = duplicate(mlx);
     int player_count = 0;
     int exit_count = 0;
     int coin_count = 0;
     int i = 0, j;
-    printf("player_count = %d\n", player_count);
-    printf("player_count = %d\n", player_count);
 
-    // Check if all rows have the same length
-    while (i < height) {
-        if ((int)strlen(tiles[i]) != width)
-            return 0;
+    while(i < height)
+    {
+        if (ft_strlen(tiles[i]) != width)
+            return (0);
         i++;
     }
 
