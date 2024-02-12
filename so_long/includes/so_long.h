@@ -6,7 +6,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "../printf/ft_printf.h"
-# include "../minilibx-linux/mlx.h"
+# include "../mlx/mlx.h"
 # include "../getnextline/get_next_line.h"
 
 # define BUFFER_SIZE 3
@@ -17,11 +17,11 @@
 # define LEFT -1
 # define RIGHT 1
 
-# define ESC 65307
-# define W 119
-# define A 97
-# define S 115
-# define D 100
+# define ESC 53
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 
 typedef struct s_img
 {

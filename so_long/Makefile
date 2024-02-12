@@ -32,7 +32,7 @@ RM = rm
 
 OBJ = $(SRC:.c=.o)
 
-MINILIBX = minilibx-linux/libmlx_Linux.a
+MINILIBX = mlx/libmlx.a
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -42,12 +42,11 @@ all : $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN) compiling $(NAME) ... $(NC)"
-	@$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-	@sleep 1
+	@$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "$(RED) $(NAME) compiled successfully. $(NC)"
 
 %.o: %.c
-	@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -Imlx -c $< -o $@
+	@$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 fclean : clean
 	@echo full cleaning of $(NAME) ...
