@@ -58,25 +58,30 @@ typedef struct s_mlx
     int total_coins;
     int drahm_in_map;
     int count_drhm;
+    int player_count;
+    int exit_count;
+    int coin_count;
     t_map *map;
     t_img *img;
 }   t_mlx;
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	**ft_split(const char *s, char c);
-int ft_exit(t_mlx *mlx);
+int ft_exit(t_mlx *mlx, int i);
 void map_adder(t_mlx *mlx);
 void	*ft_memset(void *str, int c, size_t n);
 void extract_ber(t_mlx *mlx, t_map *map, char *av);
 int	ft_key_hook(int keycode, t_mlx *mlx);
-int ft_exit(t_mlx *mlx);
 void	move_player(t_mlx *mlx, char pos, int dir);
 int MaxMlx(char **map);
-char **map_duplicate(t_mlx *mlx);
+char **duplicate(t_mlx *mlx);
+int ft_count_elements (int height, int width, t_mlx *mlx, char **tiles);
 char	*ft_strstr(const char *big, const char *little);
 void free_2D_array(int **array, int height);
+void map_img_x(t_mlx *mlx, int x, int y, int len);
 int **create_2D_array(int height, int width);
 void flood_fill(t_mlx *mlx, int x, int y, int **visited);
+int validate_map(t_mlx *mlx);
 
 
 #endif

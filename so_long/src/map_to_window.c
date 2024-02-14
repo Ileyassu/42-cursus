@@ -1,5 +1,15 @@
 #include "../includes/so_long.h"
 
+void struct_checker(t_mlx *mlx)
+{
+    if (!mlx->img->player_up || !mlx->img->player_left || !mlx->img->player_right ||
+        !mlx->img->player_down || !mlx->img->background || !mlx->img->salah || 
+        !mlx->img->drhm || !mlx->map->img || !mlx->p_img)
+    {
+        ft_exit(mlx, 1);
+        return;
+    }
+}
 static void put_objects(t_mlx *mlx)
 {
     mlx->img->player_up = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/up.xpm", &mlx->map->width, &mlx->map->height);
@@ -11,11 +21,11 @@ static void put_objects(t_mlx *mlx)
     mlx->img->drhm = mlx_xpm_file_to_image(mlx->mlx, "./tiles/coin/drhm.xpm", &mlx->map->width, &mlx->map->height);
     mlx->map->img = mlx_xpm_file_to_image(mlx->mlx, "./tiles/map_build/rock.xpm", &mlx->map->width, &mlx->map->height);
     mlx->p_img = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/down.xpm", &mlx->map->width, &mlx->map->height);
+    struct_checker(mlx);
 }
 
 int MaxMlx(char **map)
 {
-
     int tmp = -1;
     int i = 0;
     while(map && map[i])

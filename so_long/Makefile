@@ -11,10 +11,16 @@ SRC =	\
 	src/ft_split.c \
 	src/extract_ber.c \
 	src/map_to_window.c \
+	src/validate_map.c \
 	src/move.c \
+	src/ft_count_elements.c\
 	src/ft_key_hook.c \
+	src/ft_exit.c \
 	src/ft_strstr.c \
 	src/flood_fill.c \
+	src/map_img_x.c\
+	src/duplicate_map.c \
+	src/create_double_array.c \
 	getnextline/get_next_line.c \
 	getnextline/get_next_line_utils.c \
 	printf/ft_printf.c \

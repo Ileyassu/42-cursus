@@ -5,7 +5,7 @@ int	ft_key_hook(int keycode, t_mlx *mlx)
 ** will cause you to window if you reached the exit */
 {
 	if (keycode == ESC)
-		ft_exit(mlx);
+		ft_exit(mlx, 1);
 	else if (keycode == W){
 		move_player(mlx, 'y', UP);}
 	else if (keycode== A)
@@ -36,7 +36,7 @@ int	ft_key_hook(int keycode, t_mlx *mlx)
 		ft_printf("....\n");
 		usleep(800000);
 		ft_printf("talyane is ready.\n");
-	 	ft_exit(mlx);
+	 	ft_exit(mlx, 1);
 	}
 	return (0);
 }
