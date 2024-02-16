@@ -22,9 +22,9 @@ char *array_extractor (t_mlx *mlx, char *path)
         arr = ft_strjoin(arr, tmp);
         if(!arr)
             return (NULL);
+        free(tmp);
         mlx->height++;
     }
-    free(tmp);
     close(fd);
     return (arr);
 }
