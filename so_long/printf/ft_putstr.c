@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 20:28:12 by ilyas             #+#    #+#             */
-/*   Updated: 2024/02/11 14:38:18 by ilyas            ###   ########.fr       */
+/*   Updated: 2024/02/16 23:00:47 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	ft_putstr(char *s)
 {
 	int	i;
 	int	count;
-	int oui;
+	int	oui;
+
 	if (s == NULL)
 	{
 		oui = write(1, "(null)", 6);

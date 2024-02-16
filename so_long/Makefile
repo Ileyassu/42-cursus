@@ -13,8 +13,12 @@ SRC =	\
 	src/map_to_window.c \
 	src/validate_map.c \
 	src/move.c \
-	src/ft_count_elements.c\
+	src/ft_count_elements.c \
+	src/ft_put_objects.c \
+	src/validate_map_helper.c \
+	src/if_error_free.c \
 	src/ft_key_hook.c \
+	src/ft_free_arr.c \
 	src/ft_exit.c \
 	src/ft_strstr.c \
 	src/flood_fill.c \
@@ -48,11 +52,11 @@ all : $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN) compiling $(NAME) ... $(NC)"
-	@$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@$(CC) $(OBJ) $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "$(RED) $(NAME) compiled successfully. $(NC)"
 
 %.o: %.c
-	@$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 fclean : clean
 	@echo full cleaning of $(NAME) ...

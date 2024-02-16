@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 20:28:20 by ilyas             #+#    #+#             */
-/*   Updated: 2024/02/06 21:01:16 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:01:27 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,3 @@ int	count_digits(unsigned int nb)
 	}
 	return (digits);
 }
-
-

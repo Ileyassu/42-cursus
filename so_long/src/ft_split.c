@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/16 16:55:03 by ibenaiss          #+#    #+#             */
+/*   Updated: 2024/02/16 20:19:35 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 static int	wordlength(const char *s, char c)
@@ -54,14 +66,6 @@ static char	*ft_strndup(const char *str, int size)
 		ptr[i] = '\0';
 		return (ptr);
 	}
-	return (NULL);
-}
-
-static char	**ft_free_arr(char **s, int i)
-{
-	while (i--)
-		free(s[i]);
-	free(s);
 	return (NULL);
 }
 
