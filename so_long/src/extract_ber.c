@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:52:55 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/16 22:48:55 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/17 11:36:14 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,10 @@ void	extract_ber(t_mlx *mlx, t_map *map, char *filename)
 		ft_exit(mlx, 1);
 	free(arr);
 	mlx->width = ft_strlen(map->tiles[0]);
+	if (mlx->width < mlx->height)
+	{
+		ft_printf("map should be rectangular\n");
+		ft_exit(mlx, 1);
+	}
 	is_map_valid(mlx);
 }

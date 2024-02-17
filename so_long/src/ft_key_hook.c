@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:54:42 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/16 22:10:01 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/17 12:04:18 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ int	ft_key_hook(int keycode, t_mlx *mlx)
 		move_player(mlx, 'x', RIGHT);
 	if (mlx->map->tiles[mlx->p_y][mlx->p_x] == 'E')
 	{
-		if (mlx->count_drhm != mlx->drahm_in_map)
-		{
-			ft_printf("Salah ignoring you, collect more drahm\n");
-			return (0);
-		}
 		ft_exit(mlx, 0);
 	}
 	return (0);
