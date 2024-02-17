@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:53:00 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/16 18:40:49 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:02:56 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	flood_fill(t_mlx *mlx, int x, int y, int **visited)
 	{
 		return ;
 	}
-	if (mlx->map->tiles[y][x] == 'E' || visited[y][x] == 3)
+	if (mlx->map->tiles[y][x] == 'E')
 	{
 		mlx->exit_reachable = 1;
 		return ;

@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:51:15 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/16 16:52:23 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/17 17:42:38 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	error_check(int ac, char **av)
 	}
 	if (!ft_strstr(av[1], ".ber"))
 	{
-		ft_printf("Error\n");
+		ft_printf("Error, none valid map type\n");
 		return (0);
 	}
 	return (1);

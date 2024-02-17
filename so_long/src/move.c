@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:55:24 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/17 12:09:11 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/17 17:59:50 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,16 @@ void	move_player(t_mlx *mlx, char pos, int dir)
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
 	}
-	else if (pos == 'y' && dir == DOWN && mlx->p_y + 1 < mlx->map->height
+	else if (pos == 'y' && dir == DOWN && mlx->p_y + 1 < mlx->height
 		&& mlx->map->tiles[mlx->p_y + 1][mlx->p_x] != '1')
 	{
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
 	}
-	else if (pos == 'x' && dir == RIGHT && mlx->p_x + 1 < mlx->map->width
+	else if (pos == 'x' && dir == RIGHT && mlx->p_x + 1 < mlx->width
 		&& mlx->map->tiles[mlx->p_y][mlx->p_x + 1] != '1')
 	{
+		printf("test right %d\n", mlx->width);
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
 	}
