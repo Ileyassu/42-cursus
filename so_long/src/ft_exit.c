@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:53:11 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/17 17:43:14 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:05:23 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ int	ft_exit(t_mlx *mlx, int i)
 	}
 	if (mlx->map)
 		free(mlx->map);
-	if (mlx->img)
-		free(mlx->img);
+	// if (mlx->img)
+	// 	free(mlx->img);
 	if (mlx->mlx && mlx->window)
 		mlx_destroy_window(mlx->mlx, mlx->window);
-	system("leaks so_long");
 	exit(i);
 }

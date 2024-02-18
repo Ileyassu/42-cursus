@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:52:55 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/17 11:36:14 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:00:24 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ static int	check_fd_error(t_mlx *mlx, int fd)
 	return (1);
 }
 
-char	*array_extractor(t_mlx *mlx, char *path)
+char	*array_extractor(t_mlx *mlx, char *filename)
 {
 	char	*arr;
 	char	*tmp;
 	int		fd;
 
 	arr = NULL;
-	fd = open(path, O_RDONLY);
+	fd = open(filename, O_RDONLY);
 	if (!check_fd_error(mlx, fd))
 		return (NULL);
 	mlx->map->tiles = NULL;
@@ -62,18 +62,14 @@ static void	is_map_valid(t_mlx *mlx)
 void	extract_ber(t_mlx *mlx, t_map *map, char *filename)
 {
 	char	*arr;
-	char	*path;
 
-	path = ft_strdup("./map/");
-	if_error_free(path, mlx);
-	path = ft_strjoin(path, filename);
-	if_error_free(path, mlx);
 	arr = NULL;
 	mlx->height = 0;
 	mlx->width = 0;
-	arr = array_extractor(mlx, path);
+	arr = array_extractor(mlx, filename);
 	if_error_free(arr, mlx);
-	free(path);
+	free(filename);
+	
 	mlx->map->tiles = ft_split(arr, '\n');
 	if (!mlx->map->tiles)
 		ft_exit(mlx, 1);
@@ -81,8 +77,8 @@ void	extract_ber(t_mlx *mlx, t_map *map, char *filename)
 	mlx->width = ft_strlen(map->tiles[0]);
 	if (mlx->width < mlx->height)
 	{
-		ft_printf("map should be rectangular\n");
-		ft_exit(mlx, 1);
+		ft_printf("Error fix map\n");
+		exit(1);
 	}
 	is_map_valid(mlx);
 }

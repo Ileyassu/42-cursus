@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:54:42 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/17 17:55:57 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:47:57 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 int	ft_key_hook(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC)
-		ft_exit(mlx, 1);
-	else if (keycode == W)
 	{
-		move_player(mlx, 'y', UP);
+		ft_printf("Exited using ESC\n");
+		ft_printf("Game over..\n");
+		ft_exit(mlx, 0);
 	}
+	else if (keycode == W)
+		move_player(mlx, 'y', UP);
 	else if (keycode == A)
 		move_player(mlx, 'x', LEFT);
 	else if (keycode == S)

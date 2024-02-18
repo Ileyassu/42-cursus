@@ -6,13 +6,11 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:55:24 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/17 17:59:50 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:35:14 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-static int	g_step_counter;
 
 static void	draw_at_new_position(t_mlx *mlx, char position, int direction)
 {
@@ -28,7 +26,7 @@ static void	draw_at_new_position(t_mlx *mlx, char position, int direction)
 	if (position == 'x' && direction == RIGHT)
 		mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->player_right,
 			mlx->p_x * IMG_W, mlx->p_y * IMG_H);
-	ft_printf("You moved %d steps\n", ++g_step_counter);
+	ft_printf("You moved %d steps\n", ++mlx->step_counter);
 }
 
 static void	ft_player_move(t_mlx *mlx, char position, int direction)
@@ -97,7 +95,6 @@ void	move_player(t_mlx *mlx, char pos, int dir)
 	else if (pos == 'x' && dir == RIGHT && mlx->p_x + 1 < mlx->width
 		&& mlx->map->tiles[mlx->p_y][mlx->p_x + 1] != '1')
 	{
-		printf("test right %d\n", mlx->width);
 		ft_player_move(mlx, pos, dir);
 		mlx_do_sync(mlx->mlx);
 	}

@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:51:15 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/17 17:42:38 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:05:27 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static int	error_check(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error, wrong number of arguments\n");
 		return (0);
 	}
 	if (!ft_strstr(av[1], ".ber"))
 	{
-		ft_printf("Error, none valid map type\n");
+		ft_printf("Error, file format is not supported\n");
 		return (0);
 	}
 	return (1);
@@ -32,11 +32,12 @@ static int	ft_action(t_mlx *mlx)
 	map_adder(mlx);
 	mlx_hook(mlx->window, 17, 1L << 2, ft_exit, mlx);
 	mlx_key_hook(mlx->window, ft_key_hook, mlx);
-	return (0);
+	return (1);
 }
 
 static int	initializer(t_mlx *mlx)
 {
+	mlx->step_counter = 0;
 	mlx->map = malloc(sizeof(t_map));
 	if (!mlx->map)
 	{
@@ -70,11 +71,11 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	extract_ber(&mlx, mlx.map, filename);
-	free(filename);
 	mlx.mlx = mlx_init();
 	mlx.window = mlx_new_window(mlx.mlx, mlx.width * 30, mlx.height * 30,
 			"Road to salah moul 9hhwa");
 	free(mlx.img);
 	ft_action(&mlx);
+	system("leaks so_long");
 	mlx_loop(mlx.mlx);
 }

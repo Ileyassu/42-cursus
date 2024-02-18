@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 23:03:29 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/16 23:04:34 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:34:35 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_mlx
 	int		coins_collected;
 	int		exit_y;
 	int		exit_x;
+	int		step_counter;
 	int		exit_reachable;
 	int		p_x;
 	int		p_y;
