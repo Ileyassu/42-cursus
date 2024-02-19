@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:55:27 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/17 11:55:59 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:33:24 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	too_much_things_going_on(t_mlx *mlx, int **visited)
 	mlx->coins_collected = 0;
 	mlx->exit_reachable = 0;
 	flood_fill(mlx, mlx->p_x, mlx->p_y, visited);
-	if (mlx->coins_collected < mlx->total_coins || !mlx->exit_reachable)
+	if (mlx->coins_collected < mlx->total_coins || mlx->total_coins == 0 || !mlx->exit_reachable)
+	{
+		ft_printf("Check coins or exit\n");
 		return (0);
+	}
 	return (1);
 }
 
