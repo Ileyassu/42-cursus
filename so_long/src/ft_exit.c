@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:53:11 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/18 15:05:23 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:48:19 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ int	ft_exit(t_mlx *mlx, int i)
 	}
 	if (mlx->map)
 		free(mlx->map);
-	// if (mlx->img)
-	// 	free(mlx->img);
 	if (mlx->mlx && mlx->window)
 		mlx_destroy_window(mlx->mlx, mlx->window);
+	destroy_objects(mlx);
 	exit(i);
 }

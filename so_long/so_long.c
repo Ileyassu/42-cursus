@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:51:15 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/18 15:05:27 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:02:02 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int	main(int ac, char **av)
 	mlx.mlx = mlx_init();
 	mlx.window = mlx_new_window(mlx.mlx, mlx.width * 30, mlx.height * 30,
 			"Road to salah moul 9hhwa");
+	//free(filename);
 	free(mlx.img);
 	ft_action(&mlx);
-	system("leaks so_long");
 	mlx_loop(mlx.mlx);
 }

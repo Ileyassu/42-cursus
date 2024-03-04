@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_to_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:55:21 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/16 18:45:56 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:18:16 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,15 @@ void	map_adder(t_mlx *mlx)
 	x = 0;
 	y = 0;
 	mlx->img = malloc(sizeof(t_img));
+	if(!mlx->img)
+	{
+		free(mlx->img);
+		exit(0);
+	}
 	mlx->p_x = IMG_W;
 	mlx->p_y = IMG_H;
-	ft_put_objects(mlx);
+	if(ft_put_objects(mlx))
+		exit(0);
 	len = max_mlx(mlx->map->tiles);
 	mlx->count_drhm = 0;
 	mlx->drahm_in_map = 0;

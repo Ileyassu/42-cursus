@@ -3,29 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put_objects.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:19:17 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/16 22:51:44 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:18:58 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	struct_checker(t_mlx *mlx)
+static int	struct_checker(t_mlx *mlx)
 {
 	if (!mlx->img->player_up || !mlx->img->player_left
 		|| !mlx->img->player_right || !mlx->img->player_down
 		|| !mlx->img->background || !mlx->img->salah
 		|| !mlx->img->drhm || !mlx->map->img || !mlx->p_img)
 	{
+		destroy_objects(mlx);
 		ft_printf("Invalid tile\n");
 		ft_exit(mlx, 1);
-		return ;
+		return (0);
 	}
+	return (1);
 }
 
-void	ft_put_objects(t_mlx *mlx)
+int	ft_put_objects(t_mlx *mlx)
 {
 	mlx->img->player_up = mlx_xpm_file_to_image(mlx->mlx,
 			"./tiles/player/up.xpm", &mlx->map->width, &mlx->map->height);
@@ -46,5 +48,7 @@ void	ft_put_objects(t_mlx *mlx)
 			"./tiles/map_build/rock.xpm", &mlx->map->width, &mlx->map->height);
 	mlx->p_img = mlx_xpm_file_to_image(mlx->mlx, "./tiles/player/down.xpm",
 			&mlx->map->width, &mlx->map->height);
-	struct_checker(mlx);
+	if(struct_checker(mlx))
+		return (0);
+	return (1);
 }

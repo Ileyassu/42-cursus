@@ -17,6 +17,7 @@ SRC =	\
 	src/ft_put_objects.c \
 	src/validate_map_helper.c \
 	src/if_error_free.c \
+	src/destroy_objects.c \
 	src/ft_key_hook.c \
 	src/ft_free_arr.c \
 	src/ft_exit.c \
@@ -42,7 +43,7 @@ RM = rm
 
 OBJ = $(SRC:.c=.o)
 
-MINILIBX = mlx/libmlx.a
+MINILIBX = minilibx-linux/libmlx_Linux.a
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -52,11 +53,12 @@ all : $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN) compiling $(NAME) ... $(NC)"
-	@$(CC) $(OBJ) $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	@sleep 1
 	@echo "$(RED) $(NAME) compiled successfully. $(NC)"
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -Imlx -c $< -o $@
 
 fclean : clean
 	@echo full cleaning of $(NAME) ...

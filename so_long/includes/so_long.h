@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 23:03:29 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/02/18 14:34:35 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:16:37 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 # define LEFT -1
 # define RIGHT 1
 
-# define ESC 53
-# define W 13
-# define A 0
-# define S 1
-# define D 2
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
 
 typedef struct s_img
 {
@@ -88,12 +88,13 @@ int			ft_key_hook(int keycode, t_mlx *mlx);
 void		move_player(t_mlx *mlx, char pos, int dir);
 int			max_mlx(char **map);
 char		**duplicate(t_mlx *mlx);
+void		destroy_objects(t_mlx *mlx);
 int			ft_count_elements(int height, int width, t_mlx *mlx, char **tiles);
 char		*ft_strstr(const char *big, const char *little);
 void		free_two_d_array(int **array, int height);
 void		map_img_x(t_mlx *mlx, int x, int y, int len);
 int			**create_double_array(int height, int width);
-void		ft_put_objects(t_mlx *mlx);
+int			ft_put_objects(t_mlx *mlx);
 char		**ft_free_arr(char **tiles, int height);
 void		if_error_free(char *str, t_mlx *mlx);
 int			validate_map_helper(char **tiles, t_mlx *mlx, int i);
