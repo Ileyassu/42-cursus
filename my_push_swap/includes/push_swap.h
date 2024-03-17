@@ -17,5 +17,6 @@ int is_arg_valid(char *av);
 int is_sign(char c);
 char *join_all(int ac, char **av);
 t_stack *add_to_stack(char **arr_of_num);
+void free_list(t_stack *head);
 
 #endif

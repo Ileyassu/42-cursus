@@ -1,6 +1,6 @@
 SRC = \
 	src/main.c \
-	src/parse/free_double_array.c \
+	src/parse/free_utils.c \
 	src/parse/error_check.c \
 	src/parse/error_check_utils.c \
 	src/parse/add_to_stack.c

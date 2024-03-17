@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:48:32 by ilyas             #+#    #+#             */
-/*   Updated: 2024/03/16 14:03:28 by ilyas            ###   ########.fr       */
+/*   Updated: 2024/03/17 13:39:55 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ char **error_check(int ac, char **av)
         free(tmp);
         return (NULL);
     }
+    free(tmp);
     return (arr_of_numbers);
 }

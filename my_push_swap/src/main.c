@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:48:42 by ilyas             #+#    #+#             */
-/*   Updated: 2024/03/16 20:02:03 by ilyas            ###   ########.fr       */
+/*   Updated: 2024/03/17 13:58:29 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,7 @@ int main(int ac, char **av)
         printf("Error\n");
         return (0);
     }
-    printf("Works\n");
     stack_a = add_to_stack(arr_of_num);
-    free(arr_of_num);
-    t_stack *tmp;
-    tmp = stack_a;
-    int size = 0;
-    while(tmp)
-    {
-        ft_printf("%d ", tmp->value);
-        tmp = tmp->next;
-        size++;
-    }
-    printf("        size = %d\n", size);
-    free(stack_a);
+    free_double_array(arr_of_num);
+    free_list(stack_a);
 }

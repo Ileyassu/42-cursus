@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:12:19 by ilyas             #+#    #+#             */
-/*   Updated: 2024/03/16 13:53:36 by ilyas            ###   ########.fr       */
+/*   Updated: 2024/03/17 13:36:59 by ilyas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static t_stack *init_stack(int num)
     if (!new)
         return (NULL);
     new->value = num;
+    new->next = NULL;
     return (new);
 }
 
