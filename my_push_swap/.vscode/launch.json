@@ -1,0 +1,19 @@
+{
+    "version": "0.2",
+    "configurations": [
+
+        {
+            "name": "C Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "stopAtEntry": false,
+            "program": "${workspaceFolder}/push_swap",
+            "args": ["2", "4", "3"],
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "miDebuggerPath": "/usr/bin/gdb",
+            "MIMode": "gdb",
+        }
+    ]
+}
