@@ -10,12 +10,10 @@ SRC = \
 	src/rules/push.c \
 	src/rules/rotate.c \
 	src/rules/swap.c \
-	src/algorithms/sort_three.c \
 	src/algorithms/sort_utils.c \
 	src/algorithms/init.c \
 	src/algorithms/move_to_stacks.c \
 	src/algorithms/sort_three.c \
-	src/algorithms/sort_utils.c \
 	src/algorithms/sort.c
 
 NAME = push_swap

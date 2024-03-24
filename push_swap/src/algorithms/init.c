@@ -16,10 +16,10 @@ void current_index(t_stack **stack)
         tmp->index = i;
         if (tmp->index <= median)
             tmp->above_median = 1;
-        if (tmp->index > median)
+        else
             tmp->above_median = 0;
         tmp = tmp->next;
-        i++;
+        ++i;
     }
 }
 
@@ -32,11 +32,12 @@ void set_target_node(t_stack **stack_a, t_stack **stack_b)
 
     best_match_number = LONG_MIN;
     roaming_a = *stack_a;
-    while (roaming_a)
+    while (roaming_a != NULL)
     {
+        best_match_number = LONG_MIN;
         roaming_b = *stack_b;
-        while (roaming_b)
-        {
+        while (roaming_b != NULL)
+        {   
             if (roaming_a->value > roaming_b->value && roaming_b->value > best_match_number)
             {
                 best_match_number = roaming_b->value;
@@ -45,9 +46,13 @@ void set_target_node(t_stack **stack_a, t_stack **stack_b)
             roaming_b = roaming_b->next;
         }
         if (best_match_number == LONG_MIN)
+        {
             roaming_a->target = find_max_node(stack_b);
+        }
         else
+        {
             roaming_a->target = target_node;
+        }
         roaming_a = roaming_a->next;
     }
 }
@@ -64,7 +69,7 @@ void	calculate_cost(t_stack *stack_a, t_stack *stack_b)
 		stack_a->push_cost = stack_a->index;
 		if (!(stack_a->above_median))
 			stack_a->push_cost = len_a - (stack_a->index);
-		if (stack_a->target->above_median)
+		if (stack_a->target->above_median == 1)
 			stack_a->push_cost += stack_a->target->index;
 		else
 			stack_a->push_cost += len_b - (stack_a->target->index);
@@ -72,23 +77,25 @@ void	calculate_cost(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-t_stack	*set_cheapest(t_stack **stack)
+void set_cheapest(t_stack *stack)
 {
 	long			cheapest_value;
 	t_stack         *cheapest_node;
+    t_stack *tmp;
 
-	if (!(*stack))
-		return(NULL);
+    tmp = stack;
+    cheapest_node = NULL;
+	if (!tmp)
+		return;
 	cheapest_value = LONG_MAX;
-	while ((*stack))
+	while (tmp)
 	{
-		if ((*stack)->push_cost < cheapest_value)
+		if (tmp->push_cost < cheapest_value)
 		{
-			cheapest_value = (*stack)->push_cost;
-			cheapest_node = (*stack);
+			cheapest_value = tmp->push_cost;
+			cheapest_node = tmp;
 		}
-		(*stack) = (*stack)->next;
+		tmp = tmp->next;
 	}
 	cheapest_node->cheapest = 1;
-    return(cheapest_node);
 }

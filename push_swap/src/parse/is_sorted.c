@@ -21,6 +21,8 @@ int is_sorted(t_stack *stack_a)
 {
     int i;
 
+    if (!stack_a)
+        return (1);
     i = 0;
     i = stack_a->value;
     while (stack_a)
@@ -30,5 +32,5 @@ int is_sorted(t_stack *stack_a)
         i = stack_a->value;
         stack_a = stack_a->next;
     }
-    return (0);
+    return (1);
 }
