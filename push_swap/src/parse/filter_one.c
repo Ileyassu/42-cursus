@@ -1,48 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   filter_one.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 15:24:37 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/03/24 15:26:17 by ibenaiss         ###   ########.fr       */
+/*   Created: 2024/03/24 15:20:10 by ibenaiss          #+#    #+#             */
+/*   Updated: 2024/03/24 15:23:00 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	is_arr_sorted(char **arr_of_num)
+static int	filter_one_helper(char *av, int *count_digit)
 {
 	int	i;
-	int	j;
 
-	j = 1;
 	i = 0;
-	while (arr_of_num[i] && arr_of_num[j])
+	while (av[i])
 	{
-		if (ft_atoi(arr_of_num[i]) > ft_atoi(arr_of_num[j]))
+		if (av[i] != ' ' && av[i] != '\t' && !is_sign(av[i])
+			&& !ft_isdigit(av[i]))
 			return (0);
-		j++;
+		if (ft_isdigit(av[i]))
+			*count_digit = 1;
 		i++;
 	}
 	return (1);
 }
 
-int	is_sorted(t_stack *stack_a)
+int	filter_one(int ac, char **av)
 {
 	int	i;
+	int	count_digit;
 
-	if (!stack_a)
-		return (1);
-	i = 0;
-	i = stack_a->value;
-	while (stack_a)
+	count_digit = 0;
+	i = 1;
+	while (i < ac)
 	{
-		if (stack_a->value < i)
+		if (is_arg_empty(av[i]))
 			return (0);
-		i = stack_a->value;
-		stack_a = stack_a->next;
+		count_digit = 0;
+		if (!av[i][0])
+			return (0);
+		if (!filter_one_helper(av[i], &count_digit))
+			return (0);
+		i++;
 	}
 	return (1);
 }

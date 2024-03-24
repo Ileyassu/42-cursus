@@ -1,6 +1,8 @@
 SRC = \
 	src/main.c \
 	src/parse/free_utils.c \
+	src/parse/is_arg_empty.c \
+	src/parse/filter_one.c \
 	src/parse/error_check.c \
 	src/parse/error_check_utils.c \
 	src/parse/add_to_stack.c \
@@ -12,6 +14,7 @@ SRC = \
 	src/rules/swap.c \
 	src/algorithms/sort_utils.c \
 	src/algorithms/init_a_b_utils.c \
+	src/algorithms/set_target_node_a.c \
 	src/algorithms/init_a.c \
 	src/algorithms/init_b.c \
 	src/algorithms/move_to_stacks.c \

@@ -6,7 +6,7 @@
 /*   By: ilyas <ilyas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:48:45 by ilyas             #+#    #+#             */
-/*   Updated: 2024/03/17 13:57:05 by ilyas            ###   ########.fr       */
+/*   Updated: 2024/03/24 16:07:20 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	**free_double_array(char **s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -23,11 +23,11 @@ char	**free_double_array(char **s)
 	return (NULL);
 }
 
-void free_list(t_stack *head)
+void	free_list(t_stack *head)
 {
-	t_stack *tmp;
-	
-	while(head)
+	t_stack	*tmp;
+
+	while (head)
 	{
 		tmp = head;
 		head = head->next;

@@ -46,16 +46,6 @@ SRC = \
 	printf/printaddress.c \
 	getnextline/get_next_line.c \
 	getnextline/get_next_line_utils.c
-	
-
-SRC_BONUS =	\
-		ft_lstadd_front.c \
-		ft_lstclear.c \
-		ft_lstdelone.c \
-		ft_lstiter.c \
-		ft_lstnew.c \
-		ft_lstsize.c \
-		ft_lstadd_back.c
 
 NAME = libft.a
 
@@ -63,19 +53,11 @@ RM = rm
 
 OBJ = $(SRC:.c=.o)
 
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
-
-
 CFLAGS = -Wall -Wextra -Werror
 
 AR = ar rcs
 
 all : $(NAME)
-
-bonus : $(OBJ_BONUS)
-	@echo "${GREEN}Compiling...${NC}"
-	@$(AR) $(NAME) $(OBJ_BONUS) > /dev/null 2>&1
-	@echo "${GREEN}Finished compilation.${NC}"
 
 $(NAME) : $(OBJ)
 	@echo "${GREEN}Compiling...${NC}"
@@ -86,6 +68,6 @@ fclean : clean
 	@$(RM) -f $(NAME)
 
 clean :
-	@$(RM) -f $(OBJ) $(OBJ_BONUS)
+	@$(RM) -f $(OBJ)
 
 re : fclean all

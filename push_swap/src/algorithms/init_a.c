@@ -1,33 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_a.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:20:58 by ibenaiss          #+#    #+#             */
+/*   Updated: 2024/03/24 15:49:52 by ibenaiss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/push_swap.h"
-
-void set_target_node(t_stack **stack_a, t_stack **stack_b)
-{
-    t_stack *roaming_a;
-    t_stack *roaming_b;
-    t_stack *target_node;
-    long best_match_number;
-
-    best_match_number = LONG_MIN;
-    roaming_a = *stack_a;
-    while (roaming_a != NULL)
-    {
-        roaming_b = *stack_b;
-        while (roaming_b != NULL)
-        {   
-            if (roaming_a->value > roaming_b->value && roaming_b->value > best_match_number)
-            {
-                best_match_number = roaming_b->value;
-                target_node = roaming_b;
-            }
-            roaming_b = roaming_b->next;
-        }
-        if (best_match_number == LONG_MIN)
-            roaming_a->target = find_max_node(stack_b);
-        else
-            roaming_a->target = target_node;
-        roaming_a = roaming_a->next;
-    }
-}
 
 void	calculate_cost(t_stack *stack_a, t_stack *stack_b)
 {
@@ -49,16 +32,16 @@ void	calculate_cost(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void set_cheapest(t_stack *stack)
+void	set_cheapest(t_stack *stack)
 {
-	long			cheapest_value;
-	t_stack         *cheapest_node;
-    t_stack *tmp;
+	long	cheapest_value;
+	t_stack	*cheapest_node;
+	t_stack	*tmp;
 
-    tmp = stack;
-    cheapest_node = NULL;
+	tmp = stack;
+	cheapest_node = NULL;
 	if (!tmp)
-		return;
+		return ;
 	cheapest_value = LONG_MAX;
 	while (tmp)
 	{
@@ -72,13 +55,13 @@ void set_cheapest(t_stack *stack)
 	cheapest_node->cheapest = 1;
 }
 
-void init_stacks(t_stack **stack_a, t_stack **stack_b)
+void	init_stacks(t_stack **stack_a, t_stack **stack_b)
 {
-    ((*stack_a)->target = NULL);
-    ((*stack_b)->target = NULL);
-    current_index(stack_a);
-    current_index(stack_b);
-    set_target_node(stack_a, stack_b);
-    calculate_cost(*stack_a, *stack_b);
-    set_cheapest(*stack_a);
+	((*stack_a)->target = NULL);
+	((*stack_b)->target = NULL);
+	current_index(stack_a);
+	current_index(stack_b);
+	set_target_node(stack_a, stack_b);
+	calculate_cost(*stack_a, *stack_b);
+	set_cheapest(*stack_a);
 }
