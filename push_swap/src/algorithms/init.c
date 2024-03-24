@@ -1,28 +1,5 @@
 #include "../../includes/push_swap.h"
 
-void current_index(t_stack **stack)
-{
-    int i;
-    t_stack *tmp;
-    int median;
-
-    if (!stack)
-        return;
-    median = get_stack_size(*stack) / 2;
-    i = 0;
-    tmp = *stack;
-    while (tmp)
-    {
-        tmp->index = i;
-        if (tmp->index <= median)
-            tmp->above_median = 1;
-        else
-            tmp->above_median = 0;
-        tmp = tmp->next;
-        ++i;
-    }
-}
-
 void set_target_node(t_stack **stack_a, t_stack **stack_b)
 {
     t_stack *roaming_a;
@@ -34,7 +11,6 @@ void set_target_node(t_stack **stack_a, t_stack **stack_b)
     roaming_a = *stack_a;
     while (roaming_a != NULL)
     {
-        best_match_number = LONG_MIN;
         roaming_b = *stack_b;
         while (roaming_b != NULL)
         {   
@@ -46,13 +22,9 @@ void set_target_node(t_stack **stack_a, t_stack **stack_b)
             roaming_b = roaming_b->next;
         }
         if (best_match_number == LONG_MIN)
-        {
             roaming_a->target = find_max_node(stack_b);
-        }
         else
-        {
             roaming_a->target = target_node;
-        }
         roaming_a = roaming_a->next;
     }
 }

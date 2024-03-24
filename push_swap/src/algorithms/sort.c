@@ -9,15 +9,44 @@ void init_stacks(t_stack **stack_a, t_stack **stack_b)
     set_target_node(stack_a, stack_b);
     calculate_cost(*stack_a, *stack_b);
     set_cheapest(*stack_a);
-    printf("stack->value = %d\n", (*stack_a)->value);
-    //printf("trdy\n");
 }
-void	init_nodes_b(t_stack_node *a, t_stack_node *b)
+
+static void	set_target_b(t_stack *a, t_stack *b)
+{
+	t_stack	*current_a;
+	t_stack	*target_node;
+	long			best_match_index;
+
+	while (b)
+	{
+		best_match_index = LONG_MAX;
+		current_a = a;
+		while (current_a)
+		{
+			if (current_a->value > b->value 
+				&& current_a->value < best_match_index)
+			{
+				best_match_index = current_a->value;
+				target_node = current_a;
+			}
+			current_a = current_a->next;
+		}
+		if (best_match_index == LONG_MAX)
+			b->target = find_min_node(a);
+		else
+			b->target = target_node;
+		b = b->next;
+	}
+}
+
+void	init_nodes_b(t_stack **a, t_stack **b)
 {
 	current_index(a);
 	current_index(b);
-	set_target_b(a, b); //add this
+	set_target_b(*a, *b);
 }
+
+
 void sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
     int stack_size;
@@ -35,12 +64,11 @@ void sort_stack(t_stack **stack_a, t_stack **stack_b)
     sort_three(stack_a);
     while(*stack_b)
     {
-        init_nodes_b(*stack_a, *stack_b);
+
+        init_nodes_b(stack_a, stack_b);
         move_to_stack_a(stack_a, stack_b);
-        
-        printf("9rbte\n");
-        printf("tesooot\n");
     }
+
     current_index(stack_a);
     minimum_to_top(stack_a);
 }
@@ -54,11 +82,5 @@ void sort(t_stack **stack_a, t_stack **stack_b)
         sa(stack_a);
     else if (arg_num == 3)
         sort_three(stack_a);
-    //t_stack *tmp = *stack_a;
     sort_stack(stack_a, stack_b);
-    // while(tmp)
-    // {
-    //     sort_stack(stack_a, stack_b);
-    //     tmp = tmp->next;
-    // }
 }

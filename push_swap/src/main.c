@@ -40,12 +40,8 @@ int main(int ac, char **av)
     sort(&stack_a, &stack_b);
     t_stack *tmp;
     tmp = stack_a;
-    while (tmp)
-    {
-        printf("%d\n", tmp->value);
-        tmp = tmp->next;
-    }
     free_double_array(arr_of_num);
     free_list(stack_b);
     free_list(stack_a);
+    system("leaks push_swap\n");
 }
