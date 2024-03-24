@@ -15,51 +15,6 @@ int get_stack_size(t_stack *stack_a)
     return (i);
 }
 
-t_stack *find_max_node(t_stack **stack)
-{
-    t_stack *tmp;
-    t_stack *max_node = NULL;
-    long max;
-
-    if (!*stack)
-        return (NULL);
-    tmp = *stack;
-    max = tmp->value;
-    max_node = tmp;
-    while (tmp)
-    {
-        if (max < tmp->value)
-        {
-            max = tmp->value;
-            max_node = tmp;
-        }
-        tmp = tmp->next;
-    }
-    return (max_node);
-}
-
-t_stack *find_min_node(t_stack *stack)
-{
-    t_stack *tmp;
-    t_stack *min_node;
-    long min;
-
-    if (!stack)
-        return (NULL);
-    tmp = stack;
-    min = LONG_MAX;
-    while (tmp)
-    {
-        if (min > tmp->value)
-        {
-            min = tmp->value;
-            min_node = tmp;
-        }
-        tmp = tmp->next;
-    }
-	return (min_node);
-}
-
 void rotate_a_b(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node)
 {
     while(*stack_a != cheapest_node && *stack_b != cheapest_node->target)

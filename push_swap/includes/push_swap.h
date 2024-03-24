@@ -38,6 +38,7 @@ void move_to_stack_b(t_stack **stack_a, t_stack **stack_b);
 void move_to_stack_a(t_stack **stack_a, t_stack **stack_b);
 t_stack *find_max_node(t_stack **stack);
 t_stack *find_min_node(t_stack *stack);
+void	set_target_b(t_stack *a, t_stack *b);
 void rotate_a_b(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node);
 void reverse_rotate_a_b(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node);
 void make_push(t_stack **stack, t_stack *top_node, char stack_name);

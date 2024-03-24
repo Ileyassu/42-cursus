@@ -11,7 +11,9 @@ SRC = \
 	src/rules/rotate.c \
 	src/rules/swap.c \
 	src/algorithms/sort_utils.c \
-	src/algorithms/init.c \
+	src/algorithms/init_a_b_utils.c \
+	src/algorithms/init_a.c \
+	src/algorithms/init_b.c \
 	src/algorithms/move_to_stacks.c \
 	src/algorithms/sort_three.c \
 	src/algorithms/sort.c

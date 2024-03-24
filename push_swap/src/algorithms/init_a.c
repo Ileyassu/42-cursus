@@ -71,3 +71,14 @@ void set_cheapest(t_stack *stack)
 	}
 	cheapest_node->cheapest = 1;
 }
+
+void init_stacks(t_stack **stack_a, t_stack **stack_b)
+{
+    ((*stack_a)->target = NULL);
+    ((*stack_b)->target = NULL);
+    current_index(stack_a);
+    current_index(stack_b);
+    set_target_node(stack_a, stack_b);
+    calculate_cost(*stack_a, *stack_b);
+    set_cheapest(*stack_a);
+}
