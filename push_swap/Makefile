@@ -27,15 +27,15 @@ RM = rm
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 
 
-all : $(NAME)
+all : libft $(NAME)
 
 libft :
-	make -C libraries
+	@make -C libraries > /dev/null
 
-$(NAME) : libft $(OBJ)
+$(NAME) : $(OBJ)
 	$(CC) $(OBJ) -Llibraries -lft -o $(NAME)
 
 fclean : clean

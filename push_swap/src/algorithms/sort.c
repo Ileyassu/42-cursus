@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:21:13 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/03/24 15:56:48 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/03/25 00:46:15 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 
 	arg_num = get_stack_size(*stack_a);
 	if (arg_num == 2)
+	{
 		sa(stack_a);
+		return ;
+	}
 	else if (arg_num == 3)
 		sort_three(stack_a);
 	sort_stack(stack_a, stack_b);

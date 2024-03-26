@@ -6,17 +6,17 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:41:46 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/03/19 02:22:56 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:36:04 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atoi(const char *pt)
+long double	ft_atoi(const char *pt)
 {
-	int			negative_sign;
-	int			i;
-	long		result;
+	int				negative_sign;
+	int				i;
+	long double		result;
 
 	result = 0;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:48:42 by ilyas             #+#    #+#             */
-/*   Updated: 2024/03/24 16:09:13 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/03/25 00:45:10 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,4 @@ int	main(int ac, char **av)
 	sort(&stack_a, &stack_b);
 	free_double_array(arr_of_num);
 	free_list(stack_a);
-	system("leaks push_swap\n");
 }

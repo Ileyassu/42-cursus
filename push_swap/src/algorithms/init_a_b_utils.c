@@ -6,7 +6,7 @@
 /*   By: ibenaiss <ibenaiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:20:56 by ibenaiss          #+#    #+#             */
-/*   Updated: 2024/03/24 15:51:13 by ibenaiss         ###   ########.fr       */
+/*   Updated: 2024/03/26 00:24:48 by ibenaiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	current_index(t_stack **stack)
 	while (tmp)
 	{
 		tmp->index = i;
-		if (tmp->index <= median)
+		if (i <= median)
 			tmp->above_median = 1;
 		else
 			tmp->above_median = 0;
